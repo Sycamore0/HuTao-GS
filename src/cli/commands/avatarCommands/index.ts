@@ -5,8 +5,11 @@ import guidCommand from './guidCommand'
 import healCommand from './healCommand'
 import rechargeCommand from './rechargeCommand'
 import setcsCommand from './setcsCommand'
-import setfpCommand from './setfpCommand'
 import talentCommand from './talentCommand'
+import fpCommand from './fpCommand'
+import setfpCommand from './setfpCommand'
+import getfpCommand from './getfpCommand'
+import listfpCommand from './listfpCommand'
 
 const avatarCommands: CommandDefinition[] = [
   godCommand,
@@ -14,8 +17,11 @@ const avatarCommands: CommandDefinition[] = [
   rechargeCommand,
   guidCommand,
   equipCommand,
-  setcsCommand,
+  fpCommand, // setfp getfp listfp,3 in 1
   setfpCommand,
+  getfpCommand,
+  listfpCommand,
+  setcsCommand,
   talentCommand
 ]
 

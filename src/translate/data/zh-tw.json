@@ -265,14 +265,14 @@
         "warn": {
           "noData": "沒有角色数据: %0",
           "noConfig": "缺少角色的配置: %0",
-          "noFightPropConfig": "无法获取角色的fight prop配置: %0"
+          "noFightPropConfig": "无法获取角色的戰斗屬性配置: %0"
         }
       },
       "monsterData": {
         "warn": {
           "noData": "沒有动物数据: %0",
           "noConfig": "缺少动物配置: %0",
-          "noFightPropConfig": "无法获取动物的fight prop配置: %0"
+          "noFightPropConfig": "无法获取动物的戰斗屬性配置: %0"
         }
       },
       "warn": {
@@ -620,26 +620,6 @@
           "gadget": "生成 %1 級的Gadget %0 中..."
         }
       },
-      "monster": {
-        "desc": "生成怪物(TODO: Remove)",
-        "usage": {
-          "0": "monster <id> <lv> <uid> - 在該玩家當前位置生成怪物",
-          "1": "monster <id> <lv>       - （遊戲中）在當前位置生成怪物"
-        },
-        "info": {
-          "spawn": "生成 %1 級的怪物 %0 中..."
-        }
-      },
-      "gadget": {
-        "desc": "生成gadget(TODO: Remove)",
-        "usage": {
-          "0": "gadget <id> <lv> <uid> - 在該玩家當前位置生成gadget",
-          "1": "gadget <id> <lv>       - （遊戲中）在當前位置生成gadget"
-        },
-        "info": {
-          "spawn": "生成 %1 級的Gadget %0 中..."
-        }
-      },
       "vehicle": {
         "desc": "生成浪船",
         "usage": {
@@ -731,16 +711,42 @@
         }
       },
       "setfp": {
-        "desc": "為當前角色設定fight prop",
+        "desc": "為當前角色設定戰斗屬性",
         "usage": {
-          "0": "setfp <prop> <value> <uid> - 為該玩家當前角色設定fight prop",
-          "1": "setfp <prop> <value>       - (遊戲中) 為當前角色設定fight prop"
+          "0": "setfp <fightProp> <value> <uid> - 為該玩家當前角色設定戰斗屬性",
+          "1": "setfp <fightProp> <value>       - (遊戲中) 為當前角色設定戰斗屬性"
         },
         "info": {
           "set": "設定 %0(%1) to %2."
         },
         "error": {
-          "invalidFightProp": "無效的 fight prop."
+          "invalidFightProp": "無效的戰斗屬性."
+        }
+      },
+      "getfp": {
+        "desc": "獲取當前角色指定戰斗屬性的數值",
+        "usage": {
+          "0": "getfp <fightProp> <uid> - 獲取玩家當前角色指定戰斗屬性的數值",
+          "1": "getfp <fightProp>       - (游戏中) 獲取當前角色指定戰斗屬性的數值"
+        },
+        "info": {
+          "get": "當前角色的 %0(%1) 數值为 %2."
+        },
+        "error": {
+          "invalidFightProp": "無效的戰斗屬性."
+        }
+      },
+      "listfp": {
+        "desc": "列出當前角色的戰斗屬性",
+        "usage": {
+          "0": "listfp <uid> - 列出該玩家當前角色的戰斗屬性",
+          "1": "listfp       - (游戏中) 列出當前角色的戰斗屬性"
+        },
+        "info": {
+          "list": "名稱: %0 , ID: %1 , 當前值: %2 \n"
+        },
+        "error": {
+          "failedGet": "獲取失败. 名稱: %0 , ID: %1 , 錯誤信息: %2 \n"
         }
       },
       "talent": {

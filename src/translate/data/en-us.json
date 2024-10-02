@@ -621,26 +621,6 @@
           "gadget": "Spawning a level %1 gadget with id %0 ..."
         }
       },
-      "monster": {
-        "desc": "Spawn monster(TODO: Remove)",
-        "usage": {
-          "0": "monster <id> <lv> <uid> - Spawn monster at player's current avatar position",
-          "1": "monster <id> <lv>       - (In game) Spawn monster at current avatar position"
-        },
-        "info": {
-          "spawn": "Spawning a level %1 monster with id %0 ..."
-        }
-      },
-      "gadget": {
-        "desc": "Spawn gadget(TODO: Remove)",
-        "usage": {
-          "0": "gadget <id> <lv> <uid> - Spawn gadget at player's current avatar position",
-          "1": "gadget <id> <lv>       - (In game) Spawn gadget at current avatar position"
-        },
-        "info": {
-          "spawn": "Spawning a level %1 gadget with id %0 ..."
-        }
-      },
       "vehicle": {
         "desc": "Spawn vehicle",
         "usage": {
@@ -734,14 +714,40 @@
       "setfp": {
         "desc": "Set fight prop for current avatar",
         "usage": {
-          "0": "setfp <prop> <value> <uid> - Set fight prop for player's current avatar",
-          "1": "setfp <prop> <value>       - (In game) Set fight prop for current avatar"
+          "0": "setfp <fightProp> <value> <uid> - Set fight prop for player's current avatar",
+          "1": "setfp <fightProp> <value>       - (In game) Set fight prop for current avatar"
         },
         "info": {
           "set": "Set %0(%1) to %2."
         },
         "error": {
           "invalidFightProp": "Invalid fight prop."
+        }
+      },
+      "getfp": {
+        "desc": "Get fight prop for current avatar",
+        "usage": {
+          "0": "getfp <fightProp> <uid> - Get fight prop for player's current avatar",
+          "1": "getfp <fightProp>       - (In game) Get fight prop for current avatar"
+        },
+        "info": {
+          "get": " %0(%1) current value is %2."
+        },
+        "error": {
+          "invalidFightProp": "Invalid fight prop."
+        }
+      },
+      "listfp": {
+        "desc": "list fight prop for current avatar",
+        "usage": {
+          "0": "listfp <uid> - list fight prop for player's current avatar",
+          "1": "listfp       - (In game) list fight prop for current avatar"
+        },
+        "info": {
+          "list": "Name: %0 , ID: %1 , CurValue: %2 \n"
+        },
+        "error": {
+          "failedGet": "Error retrieving value. Name: %0 , ID: %1 , Error: %2 \n"
         }
       },
       "talent": {

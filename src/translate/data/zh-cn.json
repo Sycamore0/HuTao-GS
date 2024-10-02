@@ -143,13 +143,13 @@
       },
       "meta": {
         "info": {
-          "replacePasswordPublicKey": "替换密码 public key...",
-          "replaceServerPublicKey": "替换服务器 public key..."
+          "replacePasswordPublicKey": "替换密码公钥...",
+          "replaceServerPublicKey": "替换服务器公钥..."
         },
         "error": {
           "noRSAKeys": "找不到rsa密钥.",
-          "noPasswordPublicKey": "无法找到密码 public key.",
-          "noServerPublicKey": "找不到服务器 public key."
+          "noPasswordPublicKey": "无法找到密码公钥.",
+          "noServerPublicKey": "找不到服务器公钥."
         }
       },
       "ua": {
@@ -157,7 +157,7 @@
           "unknownOperand": "未知操作数: %0",
           "unknownInstruction": "未知指令: %0",
           "noReturn": "无法找到返回指令.",
-          "noServerPublicKey": "找不到服务器 public key."
+          "noServerPublicKey": "找不到服务器公钥."
         }
       },
       "patcher": {
@@ -176,7 +176,7 @@
     "worker": {
       "debug": {
         "start": "正在启动: %0",
-        "spawn": "Worker spawn: %0 ISocket port: %1",
+        "spawn": "Worker 启动: %0 ISocket 端口: %1",
         "stdout": "stdout: %0 %1",
         "stderr": "stderr: %0 %1",
         "stop": "正在停止: %0",
@@ -215,7 +215,7 @@
         "listen": "监听端口 %0"
       },
       "error": {
-        "noSSL": "无法生成ssl配置，中止.",
+        "noSSL": "无法生成SSL配置，中止.",
         "handler": "处理请求时出错: %0"
       }
     },
@@ -252,7 +252,7 @@
         "invalidToken": "无效的 token."
       },
       "error": {
-        "generateUidFail": "无法生成uid."
+        "generateUidFail": "无法生成 uid."
       }
     },
     "guid": {
@@ -265,14 +265,14 @@
         "warn": {
           "noData": "没有角色数据: %0",
           "noConfig": "缺少角色的配置: %0",
-          "noFightPropConfig": "无法获取角色的fight prop配置: %0"
+          "noFightPropConfig": "无法获取角色的战斗属性配置: %0"
         }
       },
       "monsterData": {
         "warn": {
           "noData": "没有动物数据: %0",
           "noConfig": "缺少动物配置: %0",
-          "noFightPropConfig": "无法获取动物的fight prop配置: %0"
+          "noFightPropConfig": "无法获取动物的战斗属性配置: %0"
         }
       },
       "warn": {
@@ -306,9 +306,9 @@
       "debug": {
         "loadBlock": "加载 block: %0",
         "unloadBlock": "取消加载 block: %0",
-        "abilityInvokeNoEntity": "Ability invoke to null entity: %0",
+        "abilityInvokeNoEntity": "Ability被空实体调用: %0",
         "join": "加入",
-        "joinInfo": "%0 UID: %1 ID: %2 Pos: [%3,%4,%5] Type: %6 Reason: %7",
+        "joinInfo": "%0 UID: %1 ID: %2 坐标: [%3,%4,%5] 类型: %6 原因: %7",
         "quit": "退出",
         "quitInfo": "%0 UID: %1 ID: %2"
       }
@@ -320,12 +320,12 @@
         "add": "添加: %0",
         "remove": "移除: %0",
         "replace": "代替: %0 -> %1",
-        "updateEntity": "更新 EntityID: %0"
+        "updateEntity": "更新实体ID: %0"
       }
     },
     "combat": {
       "debug": {
-        "fall": "[FALL] Type: %0 Speed: %1 Mul: %2"
+        "fall": "[FALL] 类型: %0 速度: %1 Mul: %2"
       },
       "warn": {
         "noProto": "对于参数类型没有proto: %0 %1 %2"
@@ -460,33 +460,33 @@
         }
       },
       "createConfig": {
-        "desc": "如果不存在，则使用默认值创建新config",
+        "desc": "如果不存在，则使用默认值创建新的配置文件",
         "usage": {
-          "0": "createConfig <name> - 创建新config",
+          "0": "createConfig <name> - 创建新的配置文件",
           "1": "createConfig        - Same except name is set to \"default\""
         },
         "info": {
-          "create": "正在创建config: %0",
-          "created": "已创建 config."
+          "create": "正在创建配置文件: %0",
+          "created": "已创建配置文件."
         },
         "error": {
           "invalidName": "无效的名称: %0",
-          "exists": "Config 已经存在: %0"
+          "exists": "配置文件已经存在: %0"
         }
       },
       "deleteConfig": {
-        "desc": "删除config（如果存在）",
+        "desc": "删除配置文件（如果存在）",
         "usage": {
-          "0": "deleteConfig <name> - 删除 config",
+          "0": "deleteConfig <name> - 删除配置文件",
           "1": "deleteConfig        - Same except name is set to \"default\""
         },
         "info": {
-          "delete": "删除config中: %0",
-          "deleted": "已删除config."
+          "delete": "删除配置文件中: %0",
+          "deleted": "已删除配置文件."
         },
         "error": {
           "invalidName": "无效的名称: %0",
-          "notFound": "Config 未找到: %0"
+          "notFound": "配置文件未找到: %0"
         }
       },
       "loadConfig": {
@@ -496,11 +496,11 @@
           "1": "loadConfig        - Same except name is set to \"default\""
         },
         "info": {
-          "load": "加载config中: %0"
+          "load": "加载配置文件中: %0"
         },
         "error": {
           "invalidName": "无效的名称: %0",
-          "notFound": "Config 未找到: %0"
+          "notFound": "配置文件未找到: %0"
         }
       },
       "gpatch": {
@@ -571,17 +571,17 @@
         }
       },
       "scene": {
-        "desc": "场景改变",
+        "desc": "改变场景",
         "usage": {
           "0": "scene <id> <uid> - 将该玩家传送到该场景",
-          "1": "scene <id>       - （游戏中）为自己改变场景"
+          "1": "scene <id>       - （游戏中）改变自己所在的场景"
         },
         "info": {
-          "changeScene": "修改场景到: %0"
+          "changeScene": "传送到场景: %0"
         },
         "error": {
           "sceneNotFound": "该场景未找到.",
-          "sameScene": "相同的场景."
+          "sameScene": "处于同一场景中."
         }
       },
       "tp": {
@@ -620,26 +620,6 @@
           "gadget": "生成 %1 级的Gadget %0 中..."
         }
       },
-      "monster": {
-        "desc": "生成怪物(TODO: Remove)",
-        "usage": {
-          "0": "monster <id> <lv> <uid> - 在该玩家当前位置生成怪物",
-          "1": "monster <id> <lv>       - （游戏中）在当前位置生成怪物"
-        },
-        "info": {
-          "spawn": "生成 %1 级的怪物 %0 中..."
-        }
-      },
-      "gadget": {
-        "desc": "生成gadget(TODO: Remove)",
-        "usage": {
-          "0": "gadget <id> <lv> <uid> - 在该玩家当前位置生成gadget",
-          "1": "gadget <id> <lv>       - （游戏中）在当前位置生成gadget"
-        },
-        "info": {
-          "spawn": "生成 %1 级的Gadget %0 中..."
-        }
-      },
       "vehicle": {
         "desc": "生成浪船",
         "usage": {
@@ -651,19 +631,19 @@
         }
       },
       "killall": {
-        "desc": "杀死所有附近的怪物 (32 Max)",
+        "desc": "清除所有附近的怪物 (最多32个)",
         "usage": {
-          "0": "killall <uid> - 杀死该玩家附近的怪物",
-          "1": "killall       - （游戏中）杀死附近的怪物"
+          "0": "killall <uid> - 清除该玩家附近的怪物",
+          "1": "killall       - （游戏中）清除附近的怪物"
         },
         "info": {
-          "killMonsters": "杀死怪物中..."
+          "killMonsters": "清除怪物中..."
         }
       },
       "ability": {
-        "desc": "Ability debug",
+        "desc": "调试Ability",
         "error": {
-          "entityNotFound": "Entity not found."
+          "entityNotFound": "未找到实体."
         }
       },
       "god": {
@@ -694,7 +674,7 @@
           "1": "recharge       - (游戏中) 为当前团队中的所有角色充能"
         },
         "info": {
-          "recharge": "充能完毕."
+          "recharge": "已充能所有角色."
         }
       },
       "guid": {
@@ -714,7 +694,7 @@
           "equip": "已装备 %0 至当前角色."
         },
         "error": {
-          "noEquip": "未找到该ID."
+          "noEquip": "未找到指定ID."
         }
       },
       "setcs": {
@@ -727,20 +707,46 @@
           "setSkill": "设置 cand 技能为 %0"
         },
         "error": {
-          "noSkill": "技能ID未找到."
+          "noSkill": "未找到指定技能ID."
         }
       },
       "setfp": {
-        "desc": "为当前角色设置fight prop",
+        "desc": "为当前角色设置战斗属性",
         "usage": {
-          "0": "setfp <prop> <value> <uid> - 为该玩家当前角色设置fight prop",
-          "1": "setfp <prop> <value>       - (游戏中) 为当前角色设置fight prop"
+          "0": "setfp <fightProp> <value> <uid> - 为该玩家当前角色设置战斗属性",
+          "1": "setfp <fightProp> <value>       - (游戏中) 为当前角色设置战斗属性"
         },
         "info": {
-          "set": "设置 %0(%1) to %2."
+          "set": "设置 %0(%1) 为 %2."
         },
         "error": {
-          "invalidFightProp": "无效的 fight prop."
+          "invalidFightProp": "无效战斗属性."
+        }
+      },
+      "getfp": {
+        "desc": "获取当前角色指定战斗属性的数值",
+        "usage": {
+          "0": "getfp <fightProp> <uid> - 获取该玩家当前角色指定战斗属性的数值",
+          "1": "getfp <fightProp>       - (游戏中) 获取当前角色指定战斗属性的数值"
+        },
+        "info": {
+          "get": "当前角色的 %0(%1) 数值为 %2."
+        },
+        "error": {
+          "invalidFightProp": "无效的战斗属性."
+        }
+      },
+      "listfp": {
+        "desc": "列出当前角色的战斗属性",
+        "usage": {
+          "0": "listfp <uid> - 列出该玩家当前角色的战斗属性",
+          "1": "listfp       - (游戏中) 列出当前角色的战斗属性"
+        },
+        "info": {
+          "list": "名称: %0 , ID: %1 , 当前值: %2 \n"
+        },
+        "error": {
+          "failedGet": "获取失败. 名称: %0 , ID: %1 , 错误信息: %2 \n"
         }
       },
       "talent": {
@@ -758,7 +764,7 @@
           "locked": "已锁定的天赋: %0"
         },
         "error": {
-          "talentNotFound": "天赋未找到."
+          "talentNotFound": "未找到指定天赋."
         }
       },
       "ar": {
@@ -852,7 +858,7 @@
           "give": "给予设置过的圣遗物: (%0)x%1"
         },
         "error": {
-          "setNotFound": "圣遗物未找到."
+          "setNotFound": "未找到指定圣遗物."
         }
       }
     }
