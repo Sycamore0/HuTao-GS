@@ -5,7 +5,7 @@ import { CommandDefinition } from '..'
 
 const spawnCommand: CommandDefinition = {
     name: 'spawn',
-    usage: 2,
+    usage: 4,
     args: [
         { name: 'mode', type: 'str', values: ['monster', 'gadget'] },
         { name: 'id', type: 'int', optional: false },
