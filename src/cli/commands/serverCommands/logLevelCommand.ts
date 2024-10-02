@@ -12,7 +12,8 @@ const logLevelCommand: CommandDefinition = {
   ],
   exec: async (cmdInfo) => {
     const { args, server } = cmdInfo
-    server.setLogLevel(args[0])
+    const [level] = args
+    server.setLogLevel(level)
   }
 }
 
