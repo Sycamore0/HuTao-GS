@@ -18,7 +18,7 @@ const scriptCommand: CommandDefinition = {
     const player = kcpServer.game.getPlayerByUid(uid || sender?.uid)
     if (!player) return printError(translate('generic.playerNotFound'))
 
-    if (await player.windyRce(name)) print('cli.commands.script.info.send')
+    if (await player.windyRce(name)) print(translate('cli.commands.script.info.send'))
     else printError(translate('cli.commands.script.error.scriptNotFound'))
   }
 }
