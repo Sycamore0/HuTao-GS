@@ -608,24 +608,37 @@
           "inCoop": "Player already in a coop world."
         }
       },
+      "spawn": {
+        "desc": "Spawn monster or gadget",
+        "usage": {
+          "0": "spawn monster <id> [lv] <uid> - Spawn monster at player's current avatar position",
+          "1": "spawn monster <id> [lv]       - (In game) Spawn monster at current avatar position",
+          "2": "spawn gadget <id> [lv] <uid> - Spawn gadget at player's current avatar position",
+          "3": "spawn gadget <id> [lv]       - (In game) Spawn gadget at current avatar position"
+        },
+        "info": {
+          "monster": "Spawning a level %1 monster with id %0 ...",
+          "gadget": "Spawning a level %1 gadget with id %0 ..."
+        }
+      },
       "monster": {
-        "desc": "Spawn monster",
+        "desc": "Spawn monster(TODO: Remove)",
         "usage": {
           "0": "monster <id> <lv> <uid> - Spawn monster at player's current avatar position",
           "1": "monster <id> <lv>       - (In game) Spawn monster at current avatar position"
         },
         "info": {
-          "spawn": "Spawning monster: %0"
+          "spawn": "Spawning a level %1 monster with id %0 ..."
         }
       },
       "gadget": {
-        "desc": "Spawn gadget",
+        "desc": "Spawn gadget(TODO: Remove)",
         "usage": {
           "0": "gadget <id> <lv> <uid> - Spawn gadget at player's current avatar position",
           "1": "gadget <id> <lv>       - (In game) Spawn gadget at current avatar position"
         },
         "info": {
-          "spawn": "Spawning gadget: %0"
+          "spawn": "Spawning a level %1 gadget with id %0 ..."
         }
       },
       "vehicle": {

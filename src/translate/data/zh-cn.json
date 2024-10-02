@@ -607,24 +607,37 @@
           "inCoop": "玩家已经在多人世界."
         }
       },
+      "spawn": {
+        "desc": "生成怪物或Gadget",
+        "usage": {
+          "0": "spawn monster <id> [lv] <uid> - 在该玩家当前位置生成怪物",
+          "1": "spawn monster <id> [lv]       - （游戏中）在当前位置生成怪物",
+          "2": "spawn gadget <id> [lv] <uid> - 在该玩家当前位置生成Gadget",
+          "3": "spawn gadget <id> [lv]       - （游戏中）在当前位置生成Gadget"
+        },
+        "info": {
+          "monster": "生成 %1 级的怪物 %0 中...",
+          "gadget": "生成 %1 级的Gadget %0 中..."
+        }
+      },
       "monster": {
-        "desc": "生成怪物",
+        "desc": "生成怪物(TODO: Remove)",
         "usage": {
           "0": "monster <id> <lv> <uid> - 在该玩家当前位置生成怪物",
           "1": "monster <id> <lv>       - （游戏中）在当前位置生成怪物"
         },
         "info": {
-          "spawn": "生成怪物中: %0"
+          "spawn": "生成 %1 级的怪物 %0 中..."
         }
       },
       "gadget": {
-        "desc": "生成gadget",
+        "desc": "生成gadget(TODO: Remove)",
         "usage": {
           "0": "gadget <id> <lv> <uid> - 在该玩家当前位置生成gadget",
           "1": "gadget <id> <lv>       - （游戏中）在当前位置生成gadget"
         },
         "info": {
-          "spawn": "生成gadget: %0"
+          "spawn": "生成 %1 级的Gadget %0 中..."
         }
       },
       "vehicle": {
