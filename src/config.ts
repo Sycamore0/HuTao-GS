@@ -45,13 +45,16 @@ interface Config {
 
   // host file
   hosts: string[] | null // host list
+
+  // command exec
+  allowClientRCE: boolean // if set to true, players can use `script` command in game
 }
 
 export const DEFAULT_CONFIG: Config = {
   serverName: 'HuTao GS',
   hostIp: '127.0.0.1',
   sslDir: './ssl',
-  version: '3.4.0',
+  version: '3.2.0',
   packetsToDump: [],
   useCCmd: false,
 
@@ -84,7 +87,9 @@ export const DEFAULT_CONFIG: Config = {
   },
   nameservers: ['1.1.1.1', '1.0.0.1'],
 
-  hosts: null
+  hosts: null,
+
+  allowClientRCE: false
 }
 
 export const SUPPORT_REGIONS = [

@@ -452,8 +452,11 @@
       },
       "script": {
         "desc": "Windy!!",
+        "info": {
+          "send": "正在向客户端发送脚本..."
+        },
         "error": {
-          "scriptNotFound": "Script 未找到."
+          "scriptNotFound": "未找到脚本，请检查服务端的 /data/luac 目录."
         }
       },
       "createConfig": {

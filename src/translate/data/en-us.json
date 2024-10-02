@@ -453,6 +453,9 @@
       },
       "script": {
         "desc": "Windy!!",
+        "info": {
+          "send": "Sending script to client..."
+        },
         "error": {
           "scriptNotFound": "Script not found."
         }
