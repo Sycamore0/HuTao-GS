@@ -23,12 +23,12 @@ const fpCommand: CommandDefinition = {
     const { currentAvatar } = player
     if (!currentAvatar) return printError(translate('generic.playerNoCurAvatar'))
     
-    async function listfp(avatar) {
+    async function listfp(currentAvatar) {
       let propsList = translate('cli.commands.fp.info.listHead')
       for (const [propName, propValue] of Object.entries(FightPropEnum)) {
         if (typeof propValue === 'number' && isNaN(Number(propName)) && propName !== 'FIGHT_PROP_NONE') {
           try {
-            const currentValue = await avatar.getProp(propValue)
+            const currentValue = await currentAvatar.getProp(propValue)
             propsList += translate('cli.commands.fp.info.list', propName, propValue, currentValue)
           } catch (error) {
             propsList += translate('cli.commands.fp.error.failedGet', propName, propValue, error)
