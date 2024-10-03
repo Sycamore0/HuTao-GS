@@ -12,8 +12,8 @@ const listfpCommand: CommandDefinition = {
         const { args, sender, cli, kcpServer } = cmdInfo
         const { print, printError } = cli
         const [uid] = args
-        const player = kcpServer.game.getPlayerByUid(uid || sender?.uid)
 
+        const player = kcpServer.game.getPlayerByUid(uid || sender?.uid)
         if (!player) return printError(translate('generic.playerNotFound'))
 
         const { currentAvatar } = player
@@ -24,9 +24,9 @@ const listfpCommand: CommandDefinition = {
             if (typeof propValue === 'number' && isNaN(Number(propName)) && propName !== 'FIGHT_PROP_NONE') {
                 try {
                     const currentValue = await currentAvatar.getProp(propValue);
-                    propsList += translate('cli.commaand.listfp.info.list', propName, propValue, currentValue)
+                    propsList += translate('cli.commands.listfp.info.list', propName, propValue, currentValue)
                 } catch (error) {
-                    propsList += translate('cli.commaand.listfp.error.failedGet', propName, propValue, error)
+                    propsList += translate('cli.commands.listfp.error.failedGet', propName, propValue, error)
                 }
             }
         }
