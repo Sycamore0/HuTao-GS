@@ -711,42 +711,25 @@
           "noSkill": "Skill not found."
         }
       },
-      "setfp": {
-        "desc": "Set fight prop for current avatar",
+      "fp": {
+        "desc": "Operate on the current avatar's fight prop",
         "usage": {
-          "0": "setfp <fightProp> <value> <uid> - Set fight prop for player's current avatar",
-          "1": "setfp <fightProp> <value>       - (In game) Set fight prop for current avatar"
+          "0": "fp list <uid>                      - list fight prop for player's current avatar",
+          "1": "fp list                            - (In game) list fight prop for current avatar",
+          "2": "fp get <uid> <fightProp>           - Get fight prop for player's current avatar",
+          "3": "fp get <uid> <fightProp>           - (In game) Get fight prop for current avatar",
+          "4": "fp set <uid> <fightProp> <value>   - Set fight prop for player's current avatar",
+          "5": "fp set <uid> <fightProp> <value>   - (In game) Set fight prop for current avatar"
         },
         "info": {
+          "listHead": "Fight Prop List\n",
+          "list": "Name: %0 , ID: %1 , CurValue: %2 \n",
+          "get": "%0(%1) current value is %2.",
           "set": "Set %0(%1) to %2."
         },
         "error": {
-          "invalidFightProp": "Invalid fight prop."
-        }
-      },
-      "getfp": {
-        "desc": "Get fight prop for current avatar",
-        "usage": {
-          "0": "getfp <fightProp> <uid> - Get fight prop for player's current avatar",
-          "1": "getfp <fightProp>       - (In game) Get fight prop for current avatar"
-        },
-        "info": {
-          "get": " %0(%1) current value is %2."
-        },
-        "error": {
-          "invalidFightProp": "Invalid fight prop."
-        }
-      },
-      "listfp": {
-        "desc": "list fight prop for current avatar",
-        "usage": {
-          "0": "listfp <uid> - list fight prop for player's current avatar",
-          "1": "listfp       - (In game) list fight prop for current avatar"
-        },
-        "info": {
-          "list": "Name: %0 , ID: %1 , CurValue: %2 \n"
-        },
-        "error": {
+          "invalidMode": "Invalid mode: %0 , please follow the command specification.\nThe correct format is: /fp <list|get|set> [uid] [fightProp] [value]",
+          "invalidFightProp": "Invalid fight prop.\nUse /fp list to obtain the fight prop list.",
           "failedGet": "Error retrieving value. Name: %0 , ID: %1 , Error: %2 \n"
         }
       },

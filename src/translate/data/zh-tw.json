@@ -176,7 +176,7 @@
     "worker": {
       "debug": {
         "start": "正在啟動: %0",
-        "spawn": "Worker spawn: %0 ISocket port: %1",
+        "spawn": "Worker 啟動: %0 ISocket 端口: %1",
         "stdout": "stdout: %0 %1",
         "stderr": "stderr: %0 %1",
         "stop": "正在停止: %0",
@@ -187,9 +187,9 @@
         "removeConv": "刪除conv: %0"
       },
       "info": {
-        "exit": "Worker exit: %0 Code: %1 Signal: %2",
-        "restart": "正在重新啟動 worker: %0",
-        "started": "Worker已啟動.",
+        "exit": "Worker 退出: %0 Code: %1 Signal: %2",
+        "restart": "正在重新啟動 Worker: %0",
+        "started": "Worker 已啟動.",
         "listen": "監聽控制台 %0",
         "blockAddr": "被阻止的地址: %0"
       },
@@ -215,7 +215,7 @@
         "listen": "監聽控制台 %0"
       },
       "error": {
-        "noSSL": "無法生成ssl配置，中止.",
+        "noSSL": "無法生成SSL配置，中止.",
         "handler": "處理請求時出錯: %0"
       }
     },
@@ -306,9 +306,9 @@
       "debug": {
         "loadBlock": "加載 block: %0",
         "unloadBlock": "取消加載 block: %0",
-        "abilityInvokeNoEntity": "Ability invoke to null entity: %0",
+        "abilityInvokeNoEntity": "Ability被空實體調用: %0",
         "join": "加入",
-        "joinInfo": "%0 UID: %1 ID: %2 Pos: [%3,%4,%5] Type: %6 Reason: %7",
+        "joinInfo": "%0 UID: %1 ID: %2 坐標: [%3,%4,%5] 類型: %6 原因: %7",
         "quit": "退出",
         "quitInfo": "%0 UID: %1 ID: %2"
       }
@@ -320,12 +320,12 @@
         "add": "添加: %0",
         "remove": "移除: %0",
         "replace": "代替: %0 -> %1",
-        "updateEntity": "更新 EntityID: %0"
+        "updateEntity": "更新實體ID: %0"
       }
     },
     "combat": {
       "debug": {
-        "fall": "[FALL] Type: %0 Speed: %1 Mul: %2"
+        "fall": "[FALL] 類型: %0 速度: %1 Mul: %2"
       },
       "warn": {
         "noProto": "對於參數類型沒有proto: %0 %1 %2"
@@ -462,45 +462,45 @@
       "createConfig": {
         "desc": "如果不存在，則使用預設值創建新config",
         "usage": {
-          "0": "createConfig <name> - 創建新config",
+          "0": "createConfig <name> - 創建新的配置文件",
           "1": "createConfig        - Same except name is set to \"default\""
         },
         "info": {
-          "create": "正在創建config: %0",
-          "created": "已創建 config."
+          "create": "正在創建配置文件: %0",
+          "created": "已創建配置文件."
         },
         "error": {
           "invalidName": "無效的名稱: %0",
-          "exists": "Config 已經存在: %0"
+          "exists": "配置文件已經存在: %0"
         }
       },
       "deleteConfig": {
-        "desc": "刪除config（如果存在）",
+        "desc": "刪除配置文件（如果存在）",
         "usage": {
-          "0": "deleteConfig <name> - 刪除 config",
+          "0": "deleteConfig <name> - 刪除配置文件",
           "1": "deleteConfig        - Same except name is set to \"default\""
         },
         "info": {
-          "delete": "刪除config中: %0",
-          "deleted": "已刪除config."
+          "delete": "刪除配置文件中: %0",
+          "deleted": "已刪除配置文件."
         },
         "error": {
           "invalidName": "無效的名稱: %0",
-          "notFound": "Config 未找到: %0"
+          "notFound": "配置文件未找到: %0"
         }
       },
       "loadConfig": {
-        "desc": "更改當前 config",
+        "desc": "更改當前配置文件",
         "usage": {
-          "0": "loadConfig <name> - 更改當前config併重新啟動",
+          "0": "loadConfig <name> - 更改當前配置文件併重新啟動",
           "1": "loadConfig        - Same except name is set to \"default\""
         },
         "info": {
-          "load": "加載config中: %0"
+          "load": "加載配置文件中: %0"
         },
         "error": {
           "invalidName": "無效的名稱: %0",
-          "notFound": "Config 未找到: %0"
+          "notFound": "配置文件未找到: %0"
         }
       },
       "gpatch": {
@@ -641,9 +641,9 @@
         }
       },
       "ability": {
-        "desc": "Ability debug",
+        "desc": "調試Ability",
         "error": {
-          "entityNotFound": "Entity not found."
+          "entityNotFound": "未找到指定實體."
         }
       },
       "god": {
@@ -674,7 +674,7 @@
           "1": "recharge       - (遊戲中) 為當前團隊中的所有角色充能"
         },
         "info": {
-          "recharge": "充能完畢."
+          "recharge": "已充能所有角色."
         }
       },
       "guid": {
@@ -710,42 +710,25 @@
           "noSkill": "技能ID未找到."
         }
       },
-      "setfp": {
-        "desc": "為當前角色設定戰斗屬性",
+      "fp": {
+        "desc": "對當前角色的戰斗屬性進行操作",
         "usage": {
-          "0": "setfp <fightProp> <value> <uid> - 為該玩家當前角色設定戰斗屬性",
-          "1": "setfp <fightProp> <value>       - (遊戲中) 為當前角色設定戰斗屬性"
+          "0": "fp list <uid>                      - 列出該玩家當前角色的戰斗屬性",
+          "1": "fp list                            - (遊戲中) 列出當前角色的戰斗屬性",
+          "2": "fp get <uid> <fightProp>           - 獲取玩家當前角色指定戰斗屬性的數值",
+          "3": "fp get <uid> <fightProp>           - (遊戲中) 獲取當前角色指定戰斗屬性的數值",
+          "4": "fp set <uid> <fightProp> <value>   - 為當前角色設定戰斗屬性",
+          "5": "fp set <uid> <fightProp> <value>   - (遊戲中) 為當前角色設定戰斗屬性"
         },
         "info": {
-          "set": "設定 %0(%1) to %2."
+          "listHead": "戰斗屬性列表\n",
+          "list": "名稱: %0 , ID: %1 , 當前值: %2 \n",
+          "get": "當前角色的 %0(%1) 數值为 %2.",
+          "set": "設定 %0(%1) 為 %2."
         },
         "error": {
-          "invalidFightProp": "無效的戰斗屬性."
-        }
-      },
-      "getfp": {
-        "desc": "獲取當前角色指定戰斗屬性的數值",
-        "usage": {
-          "0": "getfp <fightProp> <uid> - 獲取玩家當前角色指定戰斗屬性的數值",
-          "1": "getfp <fightProp>       - (游戏中) 獲取當前角色指定戰斗屬性的數值"
-        },
-        "info": {
-          "get": "當前角色的 %0(%1) 數值为 %2."
-        },
-        "error": {
-          "invalidFightProp": "無效的戰斗屬性."
-        }
-      },
-      "listfp": {
-        "desc": "列出當前角色的戰斗屬性",
-        "usage": {
-          "0": "listfp <uid> - 列出該玩家當前角色的戰斗屬性",
-          "1": "listfp       - (游戏中) 列出當前角色的戰斗屬性"
-        },
-        "info": {
-          "list": "名稱: %0 , ID: %1 , 當前值: %2 \n"
-        },
-        "error": {
+          "invalidMode": "無效的模式: %0 , 請注意指令規範.\n正確的格式為: /fp <list|get|set> [uid] [fightProp] [value]",
+          "invalidFightProp": "無效的戰斗屬性.\n使用 /fp list 以獲取戰斗屬性列表.",
           "failedGet": "獲取失败. 名稱: %0 , ID: %1 , 錯誤信息: %2 \n"
         }
       },

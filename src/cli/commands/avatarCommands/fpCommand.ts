@@ -4,21 +4,70 @@ import { CommandDefinition } from '..'
 
 const fpCommand: CommandDefinition = {
   name: 'fp',
-  usage: 3,
+  usage: 6,
   args: [
-    { name: 'mode', type: 'str', values: ['get', 'list', 'set'] },
+    { name: 'mode', type: 'str', values: ['list', 'get', 'set'] },
+    { name: 'uid', type: 'int', optional: true },
     { name: 'fightProp', type: 'str', optional: true },
-    { name: 'value', type: 'num', optional: true },
-    { name: 'uid', type: 'int', optional: true }
+    { name: 'value', type: 'num', optional: true }
   ],
   allowPlayer: true,
   exec: async (cmdInfo) => {
     const { args, sender, cli, kcpServer } = cmdInfo
     const { print, printError } = cli
-    const [mode, fightProp, value, uid] = args
+    const [mode, uid, fightProp, value] = args
 
-    print('TODO')
+    const player = kcpServer.game.getPlayerByUid(uid || sender?.uid)
+    if (!player) return printError(translate('generic.playerNotFound'))
+
+    const { currentAvatar } = player
+    if (!currentAvatar) return printError(translate('generic.playerNoCurAvatar'))
+    
+    async function listfp(avatar) {
+      let propsList = translate('cli.commands.fp.info.listHead')
+      for (const [propName, propValue] of Object.entries(FightPropEnum)) {
+        if (typeof propValue === 'number' && isNaN(Number(propName)) && propName !== 'FIGHT_PROP_NONE') {
+          try {
+            const currentValue = await avatar.getProp(propValue)
+            propsList += translate('cli.commands.fp.info.list', propName, propValue, currentValue)
+          } catch (error) {
+            propsList += translate('cli.commands.fp.error.failedGet', propName, propValue, error)
+          }
+        }
+      }
+      print(propsList)
+    }
+
+    async function getfp(currentAvatar, fightProp) {
+      const prop = isNaN(parseInt(fightProp)) ? FightPropEnum[<string>fightProp] : fightProp
+      if (FightPropEnum[prop] == null) return printError(translate('cli.commands.fp.error.invalidFightProp'))
+
+      const value = await currentAvatar.getProp(prop)
+      print(translate('cli.commands.fp.info.get', FightPropEnum[prop], prop, value))
+    }
+
+    async function setfp(currentAvatar, fightProp, value) {
+      const prop = isNaN(parseInt(fightProp)) ? FightPropEnum[<string>fightProp] : fightProp
+      if (FightPropEnum[prop] == null) return printError(translate('cli.commands.fp.error.invalidFightProp'))
+      await currentAvatar.setProp(prop, value, true)
+      print(translate('cli.commands.fp.info.set', FightPropEnum[prop], prop, value))
+    }
+
+    switch (mode) {
+      case 'list':
+        listfp(currentAvatar)
+        break;
+      case 'get':
+        getfp(currentAvatar, fightProp)
+        break;
+      case 'set':
+        setfp(currentAvatar, fightProp, value)
+        break;
+      default:
+        print(translate('cli.commands.fp.info.invalidMode', mode)) // Never use
+        break;
+    }
   }
-}
+};
 
-export default fpCommand
+export default fpCommand;

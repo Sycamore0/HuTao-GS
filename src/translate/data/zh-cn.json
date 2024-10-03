@@ -710,42 +710,25 @@
           "noSkill": "未找到指定技能ID."
         }
       },
-      "setfp": {
-        "desc": "为当前角色设置战斗属性",
+      "fp": {
+        "desc": "对当前角色的战斗属性进行操作",
         "usage": {
-          "0": "setfp <fightProp> <value> <uid> - 为该玩家当前角色设置战斗属性",
-          "1": "setfp <fightProp> <value>       - (游戏中) 为当前角色设置战斗属性"
+          "0": "fp list <uid>                      - 列出该玩家当前角色的战斗属性",
+          "1": "fp list                            - (游戏中) 列出当前角色的战斗属性",
+          "2": "fp get <uid> <fightProp>           - 获取该玩家当前角色指定战斗属性的数值",
+          "3": "fp get <uid> <fightProp>           - (游戏中) 获取当前角色指定战斗属性的数值",
+          "4": "fp set <uid> <fightProp> <value>   - 为该玩家当前角色设置战斗属性",
+          "5": "fp set <uid> <fightProp> <value>   - (游戏中) 为当前角色设置战斗属性"
         },
         "info": {
+          "listHead": "战斗属性列表\n",
+          "list": "名称: %0 , ID: %1 , 当前值: %2 \n",
+          "get": "当前角色的 %0(%1) 数值为 %2.",
           "set": "设置 %0(%1) 为 %2."
         },
         "error": {
-          "invalidFightProp": "无效战斗属性."
-        }
-      },
-      "getfp": {
-        "desc": "获取当前角色指定战斗属性的数值",
-        "usage": {
-          "0": "getfp <fightProp> <uid> - 获取该玩家当前角色指定战斗属性的数值",
-          "1": "getfp <fightProp>       - (游戏中) 获取当前角色指定战斗属性的数值"
-        },
-        "info": {
-          "get": "当前角色的 %0(%1) 数值为 %2."
-        },
-        "error": {
-          "invalidFightProp": "无效的战斗属性."
-        }
-      },
-      "listfp": {
-        "desc": "列出当前角色的战斗属性",
-        "usage": {
-          "0": "listfp <uid> - 列出该玩家当前角色的战斗属性",
-          "1": "listfp       - (游戏中) 列出当前角色的战斗属性"
-        },
-        "info": {
-          "list": "名称: %0 , ID: %1 , 当前值: %2 \n"
-        },
-        "error": {
+          "invalidMode": "无效的模式: %0 , 请注意指令规范.\n正确的格式为: /fp <list|get|set> [uid] [fightProp] [value]",
+          "invalidFightProp": "无效战斗属性.\n使用 /fp list 以获取战斗属性列表.",
           "failedGet": "获取失败. 名称: %0 , ID: %1 , 错误信息: %2 \n"
         }
       },
