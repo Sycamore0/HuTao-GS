@@ -20,7 +20,7 @@ const artSetCommand: CommandDefinition = {
     const setId = id
 
     let uid;
-    if (uidInput === '@s') {
+    if (uidInput === '@s' || uidInput === undefined) {
       uid = sender?.uid;
     } else if (!isNaN(parseInt(uidInput))) {
       uid = parseInt(uidInput);

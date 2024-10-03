@@ -15,7 +15,7 @@ const arCommand: CommandDefinition = {
     const [level, uidInput] = args
 
     let uid;
-    if (uidInput === '@s') {
+    if (uidInput === '@s' || uidInput === undefined) {
       uid = sender?.uid;
     } else if (!isNaN(parseInt(uidInput))) {
       uid = parseInt(uidInput);
