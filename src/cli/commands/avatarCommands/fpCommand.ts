@@ -7,7 +7,7 @@ const fpCommand: CommandDefinition = {
   usage: 6,
   args: [
     { name: 'mode', type: 'str', values: ['list', 'get', 'set'] },
-    { name: 'uid', type: 'int', optional: true },
+    { name: 'uidInput', type: 'str', optional: true },
     { name: 'fightProp', type: 'str', optional: true },
     { name: 'value', type: 'num', optional: true }
   ],
@@ -15,14 +15,23 @@ const fpCommand: CommandDefinition = {
   exec: async (cmdInfo) => {
     const { args, sender, cli, kcpServer } = cmdInfo
     const { print, printError } = cli
-    const [mode, uid, fightProp, value] = args
+    const [mode, uidInput, fightProp, value] = args
+
+    let uid;
+    if (uidInput === '@s') {
+      uid = sender?.uid;
+    } else if (!isNaN(parseInt(uidInput))) {
+      uid = parseInt(uidInput);
+    } else {
+      return printError(translate('generic.invalidTarget'));
+    }
 
     const player = kcpServer.game.getPlayerByUid(uid || sender?.uid)
     if (!player) return printError(translate('generic.playerNotFound'))
 
     const { currentAvatar } = player
     if (!currentAvatar) return printError(translate('generic.playerNoCurAvatar'))
-    
+
     async function listfp(currentAvatar) {
       let propsList = translate('cli.commands.fp.info.listHead')
       for (const [propName, propValue] of Object.entries(FightPropEnum)) {

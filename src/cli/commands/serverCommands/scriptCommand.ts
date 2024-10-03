@@ -6,14 +6,23 @@ const scriptCommand: CommandDefinition = {
   name: 'script',
   args: [
     { name: 'name', type: 'str' },
-    { name: 'uid', type: 'int', optional: true }
+    { name: 'uidInput', type: 'str', optional: true }
   ],
   allowPlayer: config.allowClientRCE,
   exec: async (cmdInfo) => {
     const { args, sender, cli, kcpServer } = cmdInfo
     const { print, printError } = cli
 
-    const [name, uid] = args
+    const [name, uidInput] = args
+
+    let uid;
+    if (uidInput === '@s') {
+      uid = sender?.uid;
+    } else if (!isNaN(parseInt(uidInput))) {
+      uid = parseInt(uidInput);
+    } else {
+      return printError(translate('generic.invalidTarget'));
+    }
 
     const player = kcpServer.game.getPlayerByUid(uid || sender?.uid)
     if (!player) return printError(translate('generic.playerNotFound'))

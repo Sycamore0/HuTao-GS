@@ -4,15 +4,23 @@ import { CommandDefinition } from '..'
 const lightningCommand: CommandDefinition = {
   name: 'lightning',
   args: [
-    { name: 'uid', type: 'int' }
+    { name: 'uidInput', type: 'str', optional: true }
   ],
   exec: async (cmdInfo) => {
-    const { args, cli, kcpServer } = cmdInfo
+    const { args, sender, cli, kcpServer } = cmdInfo
     const { print, printError } = cli
-    const [uid] = args
+    const [uidInput] = args
 
-    const player = kcpServer.game.getPlayerByUid(uid)
+    let uid;
+    if (uidInput === '@s') {
+      uid = sender?.uid;
+    } else if (!isNaN(parseInt(uidInput))) {
+      uid = parseInt(uidInput);
+    } else {
+      return printError(translate('generic.invalidTarget'));
+    }
 
+    const player = kcpServer.game.getPlayerByUid(uid || sender?.uid)
     if (!player) return printError(translate('generic.playerNotFound'))
 
     player.thunderTarget = !player.thunderTarget

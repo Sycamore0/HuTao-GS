@@ -12,6 +12,7 @@
     "param10": "%0 %1 %2 %3 %4 %5 %6 %7 %8 %9",
     "fileNotFound": "File not found: %0",
     "playerNotFound": "Player not found.",
+    "invalidTarget": "Invalid Target. It should be UID or @s .",
     "playerNoPos": "Unable to get player position.",
     "playerNoCurAvatar": "Unable to get player current avatar",
     "notInWorld": "Not in world.",
@@ -564,7 +565,7 @@
       "pos": {
         "desc": "Print current position",
         "usage": {
-          "0": "pos <uid> - Print player current position",
+          "0": "pos <uidInput> - Print player current position",
           "1": "pos       - (In game) Print your current position"
         },
         "info": {
@@ -574,7 +575,7 @@
       "scene": {
         "desc": "Change scene",
         "usage": {
-          "0": "scene <id> <uid> - Change scene for player",
+          "0": "scene <id> <uidInput> - Change scene for player",
           "1": "scene <id>       - (In game) Change scene for yourself"
         },
         "info": {
@@ -588,7 +589,7 @@
       "tp": {
         "desc": "Teleport to location",
         "usage": {
-          "0": "tp <x> <y> <z> <uid> - Teleport player to location",
+          "0": "tp <x> <y> <z> <uidInput> - Teleport player to location",
           "1": "tp <x> <y> <z>       - (In game) Teleport yourself to location"
         },
         "info": {
@@ -598,7 +599,7 @@
       "coop": {
         "desc": "Change to coop world",
         "usage": {
-          "0": "coop <uid> - Change to coop world for player",
+          "0": "coop <uidInput> - Change to coop world for player",
           "1": "coop       - (In game) Change to coop world for yourself"
         },
         "info": {
@@ -611,9 +612,9 @@
       "spawn": {
         "desc": "Spawn monster or gadget",
         "usage": {
-          "0": "spawn monster <id> [lv] <uid> - Spawn monster at player's current avatar position",
+          "0": "spawn monster <id> [lv] <uidInput> - Spawn monster at player's current avatar position",
           "1": "spawn monster <id> [lv]       - (In game) Spawn monster at current avatar position",
-          "2": "spawn gadget <id> [lv] <uid> - Spawn gadget at player's current avatar position",
+          "2": "spawn gadget <id> [lv] <uidInput> - Spawn gadget at player's current avatar position",
           "3": "spawn gadget <id> [lv]       - (In game) Spawn gadget at current avatar position"
         },
         "info": {
@@ -624,7 +625,7 @@
       "vehicle": {
         "desc": "Spawn vehicle",
         "usage": {
-          "0": "vehicle <uid> - Spawn vehicle at player's current avatar position",
+          "0": "vehicle <uidInput> - Spawn vehicle at player's current avatar position",
           "1": "vehicle       - (In game) Spawn vehicle at current avatar position"
         },
         "info": {
@@ -634,7 +635,7 @@
       "killall": {
         "desc": "Kill all nearby monsters (32 Max)",
         "usage": {
-          "0": "killall <uid> - Kill all nearby monsters for player",
+          "0": "killall <uidInput> - Kill all nearby monsters for player",
           "1": "killall       - (In game) Kill all nearby monsters"
         },
         "info": {
@@ -650,7 +651,7 @@
       "god": {
         "desc": "Toggle god mode",
         "usage": {
-          "0": "god <uid> - Toggle god mode for player",
+          "0": "god <uidInput> - Toggle god mode for player",
           "1": "god       - (In game) Toggle god mode for yourself"
         },
         "info": {
@@ -661,7 +662,7 @@
       "heal": {
         "desc": "Heal all avatar in current team",
         "usage": {
-          "0": "heal <uid> - Heal all avatar in player's current team",
+          "0": "heal <uidInput> - Heal all avatar in player's current team",
           "1": "heal       - (In game) Heal all avatar in current team"
         },
         "info": {
@@ -671,7 +672,7 @@
       "recharge": {
         "desc": "Recharge all avatar in current team",
         "usage": {
-          "0": "recharge <uid> - Recharge all avatar in player's current team",
+          "0": "recharge <uidInput> - Recharge all avatar in player's current team",
           "1": "recharge       - (In game) Recharge all avatar in current team"
         },
         "info": {
@@ -681,14 +682,14 @@
       "guid": {
         "desc": "Show current avatar guid & equips guid",
         "usage": {
-          "0": "guid <uid> - Show player's current avatar guid & equips guid",
+          "0": "guid <uidInput> - Show player's current avatar guid & equips guid",
           "1": "guid       - (In game) Show current avatar guid & equips guid"
         }
       },
       "equip": {
         "desc": "Equip weapon or artifact",
         "usage": {
-          "0": "equip <guid> <uid> - Equip weapon or artifact to player's current avatar",
+          "0": "equip <guid> <uidInput> - Equip weapon or artifact to player's current avatar",
           "1": "equip <guid>       - (In game) Equip weapon or artifact to current avatar"
         },
         "info": {
@@ -701,7 +702,7 @@
       "setcs": {
         "desc": "Set candidate skill for current avatar",
         "usage": {
-          "0": "setcs <id> <uid> - Set candidate skill for player's current avatar",
+          "0": "setcs <id> <uidInput> - Set candidate skill for player's current avatar",
           "1": "setcs <id>       - (In game) Set candidate skill for current avatar"
         },
         "info": {
@@ -714,12 +715,12 @@
       "fp": {
         "desc": "Operate on the current avatar's fight prop",
         "usage": {
-          "0": "fp list <uid>                      - list fight prop for player's current avatar",
+          "0": "fp list <uidInput>                      - list fight prop for player's current avatar",
           "1": "fp list                            - (In game) list fight prop for current avatar",
-          "2": "fp get <uid> <fightProp>           - Get fight prop for player's current avatar",
-          "3": "fp get <uid> <fightProp>           - (In game) Get fight prop for current avatar",
-          "4": "fp set <uid> <fightProp> <value>   - Set fight prop for player's current avatar",
-          "5": "fp set <uid> <fightProp> <value>   - (In game) Set fight prop for current avatar"
+          "2": "fp get <uidInput> <fightProp>           - Get fight prop for player's current avatar",
+          "3": "fp get <uidInput> <fightProp>           - (In game) Get fight prop for current avatar",
+          "4": "fp set <uidInput> <fightProp> <value>   - Set fight prop for player's current avatar",
+          "5": "fp set <uidInput> <fightProp> <value>   - (In game) Set fight prop for current avatar"
         },
         "info": {
           "listHead": "Fight Prop List\n",
@@ -736,11 +737,11 @@
       "talent": {
         "desc": "Edit/List current avatar talents",
         "usage": {
-          "0": "talent unlock <uid> - Unlock talent for player's current avatar",
+          "0": "talent unlock <uidInput> - Unlock talent for player's current avatar",
           "1": "talent unlock       - (In game) Unlock talent for current avatar",
-          "2": "talent lock <uid>   - Lock talent for player's current avatar",
+          "2": "talent lock <uidInput>   - Lock talent for player's current avatar",
           "3": "talent lock         - (In game) Lock talent for current avatar",
-          "4": "talent list <uid>   - List unlocked talents of player's current avatar",
+          "4": "talent list <uidInput>   - List unlocked talents of player's current avatar",
           "5": "talent list         - (In game) List unlocked talents of current avatar"
         },
         "info": {
@@ -754,7 +755,7 @@
       "ar": {
         "desc": "Set adventure rank",
         "usage": {
-          "0": "ar <level> <uid> - Set adventure rank for player",
+          "0": "ar <level> <uidInput> - Set adventure rank for player",
           "1": "ar <level>       - (In game) Set adventure rank for yourself"
         },
         "info": {
@@ -764,7 +765,7 @@
       "hcoin": {
         "desc": "Give primogem",
         "usage": {
-          "0": "hcoin <amount> <uid> - Give primogem to player",
+          "0": "hcoin <amount> <uidInput> - Give primogem to player",
           "1": "hcoin <amount>       - (In game) Give primogem to yourself"
         },
         "info": {
@@ -774,7 +775,7 @@
       "mcoin": {
         "desc": "Give genesis crystal",
         "usage": {
-          "0": "mcoin <amount> <uid> - Give genesis crystal to player",
+          "0": "mcoin <amount> <uidInput> - Give genesis crystal to player",
           "1": "mcoin <amount>       - (In game) Give genesis crystal to yourself"
         },
         "info": {
@@ -784,7 +785,7 @@
       "scoin": {
         "desc": "Give mora",
         "usage": {
-          "0": "scoin <amount> <uid> - Give mora to player",
+          "0": "scoin <amount> <uidInput> - Give mora to player",
           "1": "scoin <amount>       - (In game) Give mora to yourself"
         },
         "info": {
@@ -801,7 +802,7 @@
       "material": {
         "desc": "Give material",
         "usage": {
-          "0": "material <id> <count> <uid> - Give materials to player",
+          "0": "material <id> <count> <uidInput> - Give materials to player",
           "1": "material <id> <count>       - (In game) Give materials to yourself",
           "2": "material <id>               - (In game) Give 1 material to yourself"
         },
@@ -812,7 +813,7 @@
       "weapon": {
         "desc": "Give weapon",
         "usage": {
-          "0": "weapon <id> <count> <uid> - Give weapons to player",
+          "0": "weapon <id> <count> <uidInput> - Give weapons to player",
           "1": "weapon <id> <count>       - (In game) Give weapons to yourself",
           "2": "weapon <id>               - (In game) Give 1 weapon to yourself"
         },
@@ -823,7 +824,7 @@
       "artifact": {
         "desc": "Give artifact",
         "usage": {
-          "0": "artifact <id> <count> <uid> - Give artifacts to player",
+          "0": "artifact <id> <count> <uidInput> - Give artifacts to player",
           "1": "artifact <id> <count>       - (In game) Give artifacts to yourself",
           "2": "artifact <id>               - (In game) Give 1 artifact to yourself"
         },
@@ -834,7 +835,7 @@
       "artSet": {
         "desc": "Give artifact set",
         "usage": {
-          "0": "artSet <id> <count> <uid> - Give artifact sets to player",
+          "0": "artSet <id> <count> <uidInput> - Give artifact sets to player",
           "1": "artSet <id> <count>       - (In game) Give artifact sets to yourself",
           "2": "artSet <id>               - (In game) Give 1 artifact set to yourself"
         },

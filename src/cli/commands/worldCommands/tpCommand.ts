@@ -10,15 +10,24 @@ const tpCommand: CommandDefinition = {
     { name: 'x', type: 'int' },
     { name: 'y', type: 'int' },
     { name: 'z', type: 'int' },
-    { name: 'uid', type: 'int', optional: true }
+    { name: 'uidInput', type: 'str', optional: true }
   ],
   allowPlayer: true,
   exec: async (cmdInfo) => {
     const { args, sender, cli, kcpServer } = cmdInfo
     const { print, printError } = cli
-    const [x, y, z, uid] = args
-    const player = kcpServer.game.getPlayerByUid(uid || sender?.uid)
+    const [x, y, z, uidInput] = args
 
+    let uid;
+    if (uidInput === '@s') {
+      uid = sender?.uid;
+    } else if (!isNaN(parseInt(uidInput))) {
+      uid = parseInt(uidInput);
+    } else {
+      return printError(translate('generic.invalidTarget'));
+    }
+
+    const player = kcpServer.game.getPlayerByUid(uid || sender?.uid)
     if (!player) return printError(translate('generic.playerNotFound'))
 
     const { currentScene, context } = player

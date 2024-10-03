@@ -12,6 +12,7 @@
     "param10": "%0 %1 %2 %3 %4 %5 %6 %7 %8 %9",
     "fileNotFound": "找不到文件: %0",
     "playerNotFound": "未找到玩家.",
+    "invalidTarget": "无效的目标. 应为 UID 或 @s .",
     "playerNoPos": "无法获取玩家位置.",
     "playerNoCurAvatar": "无法获取玩家当前角色",
     "notInWorld": "不存在于大世界中.",
@@ -563,7 +564,7 @@
       "pos": {
         "desc": "打印当前位置",
         "usage": {
-          "0": "pos <uid> - 打印该玩家当前位置",
+          "0": "pos <uidInput> - 打印该玩家当前位置",
           "1": "pos       - （游戏中）打印当前位置"
         },
         "info": {
@@ -573,7 +574,7 @@
       "scene": {
         "desc": "改变场景",
         "usage": {
-          "0": "scene <id> <uid> - 将该玩家传送到该场景",
+          "0": "scene <id> <uidInput> - 将该玩家传送到该场景",
           "1": "scene <id>       - （游戏中）改变自己所在的场景"
         },
         "info": {
@@ -587,7 +588,7 @@
       "tp": {
         "desc": "传送到某位置",
         "usage": {
-          "0": "tp <x> <y> <z> <uid> - 传送该玩家到某坐标",
+          "0": "tp <x> <y> <z> <uidInput> - 传送该玩家到某坐标",
           "1": "tp <x> <y> <z>       - （游戏中）将自己传送到某坐标"
         },
         "info": {
@@ -597,7 +598,7 @@
       "coop": {
         "desc": "切换为多人世界",
         "usage": {
-          "0": "coop <uid> - 将某玩家切换为多人世界",
+          "0": "coop <uidInput> - 将某玩家切换为多人世界",
           "1": "coop       - （游戏中）为自己切换为多人世界"
         },
         "info": {
@@ -610,9 +611,9 @@
       "spawn": {
         "desc": "生成怪物或Gadget",
         "usage": {
-          "0": "spawn monster <id> [lv] <uid> - 在该玩家当前位置生成怪物",
+          "0": "spawn monster <id> [lv] <uidInput> - 在该玩家当前位置生成怪物",
           "1": "spawn monster <id> [lv]       - （游戏中）在当前位置生成怪物",
-          "2": "spawn gadget <id> [lv] <uid> - 在该玩家当前位置生成Gadget",
+          "2": "spawn gadget <id> [lv] <uidInput> - 在该玩家当前位置生成Gadget",
           "3": "spawn gadget <id> [lv]       - （游戏中）在当前位置生成Gadget"
         },
         "info": {
@@ -623,7 +624,7 @@
       "vehicle": {
         "desc": "生成浪船",
         "usage": {
-          "0": "vehicle <uid> - 在该玩家当前位置生成浪船",
+          "0": "vehicle <uidInput> - 在该玩家当前位置生成浪船",
           "1": "vehicle       - （游戏中）在当前位置生成浪船"
         },
         "info": {
@@ -633,7 +634,7 @@
       "killall": {
         "desc": "清除所有附近的怪物 (最多32个)",
         "usage": {
-          "0": "killall <uid> - 清除该玩家附近的怪物",
+          "0": "killall <uidInput> - 清除该玩家附近的怪物",
           "1": "killall       - （游戏中）清除附近的怪物"
         },
         "info": {
@@ -649,7 +650,7 @@
       "god": {
         "desc": "切换上帝模式",
         "usage": {
-          "0": "god <uid> - 为该玩家切换上帝模式",
+          "0": "god <uidInput> - 为该玩家切换上帝模式",
           "1": "god       - （游戏中）为自己切换上帝模式"
         },
         "info": {
@@ -660,7 +661,7 @@
       "heal": {
         "desc": "治疗当前团队中的所有角色",
         "usage": {
-          "0": "heal <uid> - 治疗该玩家当前团队中的所有角色",
+          "0": "heal <uidInput> - 治疗该玩家当前团队中的所有角色",
           "1": "heal       - (游戏中)治疗当前团队中的所有角色"
         },
         "info": {
@@ -670,7 +671,7 @@
       "recharge": {
         "desc": "为当前团队中的所有角色充能",
         "usage": {
-          "0": "recharge <uid> - 为该玩家当前团队中的所有角色充能",
+          "0": "recharge <uidInput> - 为该玩家当前团队中的所有角色充能",
           "1": "recharge       - (游戏中) 为当前团队中的所有角色充能"
         },
         "info": {
@@ -680,14 +681,14 @@
       "guid": {
         "desc": "显示当前角色guid和装备guid",
         "usage": {
-          "0": "guid <uid> - 显示该玩家的当前角色guid和装备guid",
+          "0": "guid <uidInput> - 显示该玩家的当前角色guid和装备guid",
           "1": "guid       - (游戏中) 显示当前角色guid和装备guid"
         }
       },
       "equip": {
         "desc": "装备武器或圣遗物",
         "usage": {
-          "0": "equip <guid> <uid> - 为该玩家当前角色装备武器或圣遗物",
+          "0": "equip <guid> <uidInput> - 为该玩家当前角色装备武器或圣遗物",
           "1": "equip <guid>       - (游戏中) 为当前角色装备武器或圣遗物"
         },
         "info": {
@@ -700,7 +701,7 @@
       "setcs": {
         "desc": "为当前角色设置 cand 技能",
         "usage": {
-          "0": "setcs <id> <uid> - 为该玩家当前角色设置 cand 技能",
+          "0": "setcs <id> <uidInput> - 为该玩家当前角色设置 cand 技能",
           "1": "setcs <id>       - (游戏中) 为当前角色设置 cand 技能"
         },
         "info": {
@@ -713,12 +714,12 @@
       "fp": {
         "desc": "对当前角色的战斗属性进行操作",
         "usage": {
-          "0": "fp list <uid>                      - 列出该玩家当前角色的战斗属性",
+          "0": "fp list <uidInput>                      - 列出该玩家当前角色的战斗属性",
           "1": "fp list                            - (游戏中) 列出当前角色的战斗属性",
-          "2": "fp get <uid> <fightProp>           - 获取该玩家当前角色指定战斗属性的数值",
-          "3": "fp get <uid> <fightProp>           - (游戏中) 获取当前角色指定战斗属性的数值",
-          "4": "fp set <uid> <fightProp> <value>   - 为该玩家当前角色设置战斗属性",
-          "5": "fp set <uid> <fightProp> <value>   - (游戏中) 为当前角色设置战斗属性"
+          "2": "fp get <uidInput> <fightProp>           - 获取该玩家当前角色指定战斗属性的数值",
+          "3": "fp get <uidInput> <fightProp>           - (游戏中) 获取当前角色指定战斗属性的数值",
+          "4": "fp set <uidInput> <fightProp> <value>   - 为该玩家当前角色设置战斗属性",
+          "5": "fp set <uidInput> <fightProp> <value>   - (游戏中) 为当前角色设置战斗属性"
         },
         "info": {
           "listHead": "战斗属性列表\n",
@@ -735,11 +736,11 @@
       "talent": {
         "desc": "编辑/列出当前角色天赋",
         "usage": {
-          "0": "talent unlock <uid> - 解锁玩家当前角色的天赋",
+          "0": "talent unlock <uidInput> - 解锁玩家当前角色的天赋",
           "1": "talent unlock       - (游戏中) 解锁当前角色天赋",
-          "2": "talent lock <uid>   - 锁定玩家当前角色的天赋",
+          "2": "talent lock <uidInput>   - 锁定玩家当前角色的天赋",
           "3": "talent lock         - (游戏中) 锁定当前角色天赋",
-          "4": "talent list <uid>   - 列出玩家当前角色已解锁的天赋",
+          "4": "talent list <uidInput>   - 列出玩家当前角色已解锁的天赋",
           "5": "talent list         - (游戏中) 列出当前角色已解锁的天赋"
         },
         "info": {
@@ -753,7 +754,7 @@
       "ar": {
         "desc": "设置冒险等级",
         "usage": {
-          "0": "ar <level> <uid> - 为该玩家设置冒险等级",
+          "0": "ar <level> <uidInput> - 为该玩家设置冒险等级",
           "1": "ar <level>       - (游戏中) 给自己设置冒险等级"
         },
         "info": {
@@ -763,7 +764,7 @@
       "hcoin": {
         "desc": "给予原石",
         "usage": {
-          "0": "hcoin <amount> <uid> - 为该玩家给予某数量的原石",
+          "0": "hcoin <amount> <uidInput> - 为该玩家给予某数量的原石",
           "1": "hcoin <amount>       - (游戏中)为自己给予某数量的原石"
         },
         "info": {
@@ -773,7 +774,7 @@
       "mcoin": {
         "desc": "给予创世结晶",
         "usage": {
-          "0": "mcoin <amount> <uid> - 给予某数量创世结晶到该玩家",
+          "0": "mcoin <amount> <uidInput> - 给予某数量创世结晶到该玩家",
           "1": "mcoin <amount>       - (游戏中) 给自己给予某数量的创世结晶"
         },
         "info": {
@@ -783,7 +784,7 @@
       "scoin": {
         "desc": "给予摩拉",
         "usage": {
-          "0": "scoin <amount> <uid> - 给予某数量摩拉到该玩家",
+          "0": "scoin <amount> <uidInput> - 给予某数量摩拉到该玩家",
           "1": "scoin <amount>       - (游戏中) 给自己给予某数量的摩拉"
         },
         "info": {
@@ -800,7 +801,7 @@
       "material": {
         "desc": "给予材料",
         "usage": {
-          "0": "material <id> <count> <uid> - 给予某数量的材料到该玩家",
+          "0": "material <id> <count> <uidInput> - 给予某数量的材料到该玩家",
           "1": "material <id> <count>       - （游戏中）给予自己某数量的材料",
           "2": "material <id>               - （游戏中）给予自己一个材料"
         },
@@ -811,7 +812,7 @@
       "weapon": {
         "desc": "给予武器",
         "usage": {
-          "0": "weapon <id> <count> <uid> - 给予某数量的武器到该玩家",
+          "0": "weapon <id> <count> <uidInput> - 给予某数量的武器到该玩家",
           "1": "weapon <id> <count>       - （游戏中）给予自己某数量的武器",
           "2": "weapon <id>               - （游戏中）给予自己一件武器"
         },
@@ -822,7 +823,7 @@
       "artifact": {
         "desc": "给予圣遗物",
         "usage": {
-          "0": "artifact <id> <count> <uid> - 给予某数量的圣遗物到该玩家",
+          "0": "artifact <id> <count> <uidInput> - 给予某数量的圣遗物到该玩家",
           "1": "artifact <id> <count>       - （游戏中）给予自己某数量的圣遗物",
           "2": "artifact <id>               - （游戏中）给予自己一个圣遗物"
         },
@@ -833,7 +834,7 @@
       "artSet": {
         "desc": "给予设置过的圣遗物",
         "usage": {
-          "0": "artSet <id> <count> <uid> -  给予某数量的圣遗物到该玩家",
+          "0": "artSet <id> <count> <uidInput> -  给予某数量的圣遗物到该玩家",
           "1": "artSet <id> <count>       - （游戏中）给予自己某数量的圣遗物",
           "2": "artSet <id>               - （游戏中）给予自己一个圣遗物"
         },
