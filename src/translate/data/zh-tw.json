@@ -572,17 +572,31 @@
         }
       },
       "scene": {
-        "desc": "場景改變",
+        "desc": "進入場景",
         "usage": {
           "0": "scene <id> <uidInput> - 將該玩家傳送到該場景",
-          "1": "scene <id>       - （遊戲中）為自己改變場景"
+          "1": "scene <id>       - （遊戲中）改變自己所在的場景"
         },
         "info": {
           "changeScene": "修改場景到: %0"
         },
         "error": {
           "sceneNotFound": "該場景未找到.",
-          "sameScene": "相同的場景."
+          "sameScene": "處於同一場景中."
+        }
+      },
+      "dungeon": {
+        "desc": "進入秘境",
+        "usage": {
+          "0": "dungeon <id> <uidInput> - 將該玩家傳送到該秘境",
+          "1": "dungeon <id>       - （遊戲中）改變自己所在的秘境"
+        },
+        "info": {
+          "changeScene": "傳送到秘境: %0(場景: %1)"
+        },
+        "error": {
+          "sceneNotFound": "該場景未找到.",
+          "sameScene": "處於同一場景中."
         }
       },
       "tp": {
