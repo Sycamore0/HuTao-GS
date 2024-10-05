@@ -761,6 +761,16 @@
           "setAR": "冒险等级设置为: %0"
         }
       },
+      "resin": {
+        "desc": "给予树脂",
+        "usage": {
+          "0": "resin <amount> <uidInput> - 为该玩家给予某数量的树脂",
+          "1": "resin <amount>       - (游戏中)为自己给予某数量的树脂"
+        },
+        "info": {
+          "give": "给予树脂: %0"
+        }
+      },
       "hcoin": {
         "desc": "给予原石",
         "usage": {

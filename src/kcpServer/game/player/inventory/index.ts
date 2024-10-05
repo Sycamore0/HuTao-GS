@@ -39,6 +39,7 @@ export default class Inventory {
       case 105: // Companionship exp
         break
       case 106: // Resin
+        await player.addResin(count)
         break
       case 107:  // Legendary Key
         break
