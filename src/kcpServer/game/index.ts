@@ -5,6 +5,7 @@ import ActivityScheduleInfo from '#/packets/ActivityScheduleInfo'
 import AllWidgetData from '#/packets/AllWidgetData'
 import AvatarData from '#/packets/AvatarData'
 import AvatarSatiationData from '#/packets/AvatarSatiationData'
+import CombineData from '#/packets/CombineData'
 import CoopData from '#/packets/CoopData'
 import DoSetPlayerBornData from '#/packets/DoSetPlayerBornData'
 import FinishedParentQuest from '#/packets/FinishedParentQuest'
@@ -182,6 +183,7 @@ export default class Game {
     await ActivityScheduleInfo.sendNotify(context)
     await activityManager.sendAllActivityInfo(context)
 
+    await CombineData.sendNotify(context)
     await PlayerData.sendNotify(context)
     await OpenStateUpdate.sendNotify(context)
     await StoreWeightLimit.sendNotify(context)
