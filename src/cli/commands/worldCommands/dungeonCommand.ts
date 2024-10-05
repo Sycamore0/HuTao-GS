@@ -1,11 +1,12 @@
 import SceneData from '$/gameData/data/SceneData'
+import DungeonData from '$/gameData/data/DungeonData'
 import Vector from '$/utils/vector'
 import translate from '@/translate'
 import { SceneEnterReasonEnum, SceneEnterTypeEnum } from '@/types/proto/enum'
 import { CommandDefinition } from '..'
 
-const sceneCommand: CommandDefinition = {
-  name: 'scene',
+const dungeonCommand: CommandDefinition = {
+  name: 'dungeon',
   usage: 2,
   args: [
     { name: 'id', type: 'int' },
@@ -32,12 +33,14 @@ const sceneCommand: CommandDefinition = {
     const { currentWorld, currentScene, context } = player
     if (!currentWorld) return printError(translate('generic.notInWorld'))
 
-    const scene = await currentWorld.getScene(id)
-    const sceneData = await SceneData.getScene(id)
-    if (!scene || !sceneData) return printError(translate('cli.commands.scene.error.sceneNotFound'))
-    if (currentScene === scene) return printError(translate('cli.commands.scene.error.sameScene'))
+    const sceneId = await DungeonData.getSceneByDungeon(id)
 
-    print(translate('cli.commands.scene.info.changeScene', scene.id))
+    const scene = await currentWorld.getScene(sceneId)
+    const sceneData = await SceneData.getScene(sceneId)
+    if (!scene || !sceneData) return printError(translate('cli.commands.dungeon.error.sceneNotFound'))
+    if (currentScene === scene) return printError(translate('cli.commands.dungeon.error.sameScene'))
+
+    print(translate('cli.commands.dungeon.info.changeScene', id, scene.id))
 
     const { BornPos, BornRot } = sceneData
 
@@ -47,8 +50,8 @@ const sceneCommand: CommandDefinition = {
     pos.setData(BornPos)
     rot.setData(BornRot)
 
-    scene.join(context, pos, rot, SceneEnterTypeEnum.ENTER_JUMP, SceneEnterReasonEnum.TRANS_POINT)
+    scene.join(context, pos, rot, SceneEnterTypeEnum.ENTER_DUNGEON, SceneEnterReasonEnum.DUNGEON_ENTER)
   }
 }
 
-export default sceneCommand
+export default dungeonCommand

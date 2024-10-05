@@ -11,8 +11,9 @@ const disconnectCommand: CommandDefinition = {
   allowPlayer: true,
   exec: async (cmdInfo) => {
     const { args, cli, kcpServer } = cmdInfo
-    cli.print(translate('cli.commands.disconnect.info.disconnect', args[0]))
-    if (!await kcpServer.disconnect(parseInt(args[0], 16), args[1])) await kcpServer.disconnectUid(parseInt(args[0]), args[1])
+    const [uid, reason] = args
+    cli.print(translate('cli.commands.disconnect.info.disconnect', uid))
+    if (!await kcpServer.disconnect(parseInt(uid, 16), reason)) await kcpServer.disconnectUid(parseInt(uid), reason)
   }
 }
 

@@ -1,20 +1,18 @@
-import Weapon from '$/equip/weapon'
 import translate from '@/translate'
 import { CommandDefinition } from '..'
 
-const weaponCommand: CommandDefinition = {
-  name: 'weapon',
-  usage: 3,
+const resinCommand: CommandDefinition = {
+  name: 'resin',
+  usage: 2,
   args: [
-    { name: 'id', type: 'int' },
-    { name: 'count', type: 'int', optional: true },
+    { name: 'amount', type: 'int' },
     { name: 'uidInput', type: 'str', optional: true }
   ],
   allowPlayer: true,
   exec: async (cmdInfo) => {
     const { args, sender, cli, kcpServer } = cmdInfo
     const { print, printError } = cli
-    const [id, count = 1, uidInput] = args
+    const [amount, uidInput] = args
 
     let uid;
     if (uidInput === '@s' || uidInput === undefined) {
@@ -28,14 +26,10 @@ const weaponCommand: CommandDefinition = {
     const player = kcpServer.game.getPlayerByUid(uid || sender?.uid)
     if (!player) return printError(translate('generic.playerNotFound'))
 
-    print(translate('cli.commands.weapon.info.give', id, count))
+    print(translate('cli.commands.resin.info.give', amount))
 
-    for (let i = 0; i < count; i++) {
-      const weapon = new Weapon(id, player)
-      await weapon.initNew()
-      if (!await player.inventory.add(weapon)) return printError(translate('generic.inventoryFull'))
-    }
+    player.addResin(amount)
   }
 }
 
-export default weaponCommand
+export default resinCommand

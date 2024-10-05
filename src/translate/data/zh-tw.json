@@ -12,6 +12,7 @@
     "param10": "%0 %1 %2 %3 %4 %5 %6 %7 %8 %9",
     "fileNotFound": "找不到檔案: %0",
     "playerNotFound": "未找到玩家.",
+    "invalidTarget": "無效的目標. 應為 UID 或 @s .",
     "playerNoPos": "無法獲取玩家位置.",
     "playerNoCurAvatar": "無法獲取玩家當前角色",
     "notInWorld": "不存在於大世界中.",
@@ -176,7 +177,7 @@
     "worker": {
       "debug": {
         "start": "正在啟動: %0",
-        "spawn": "Worker spawn: %0 ISocket port: %1",
+        "spawn": "Worker 啟動: %0 ISocket 端口: %1",
         "stdout": "stdout: %0 %1",
         "stderr": "stderr: %0 %1",
         "stop": "正在停止: %0",
@@ -187,9 +188,9 @@
         "removeConv": "刪除conv: %0"
       },
       "info": {
-        "exit": "Worker exit: %0 Code: %1 Signal: %2",
-        "restart": "正在重新啟動 worker: %0",
-        "started": "Worker已啟動.",
+        "exit": "Worker 退出: %0 Code: %1 Signal: %2",
+        "restart": "正在重新啟動 Worker: %0",
+        "started": "Worker 已啟動.",
         "listen": "監聽控制台 %0",
         "blockAddr": "被阻止的地址: %0"
       },
@@ -215,7 +216,7 @@
         "listen": "監聽控制台 %0"
       },
       "error": {
-        "noSSL": "無法生成ssl配置，中止.",
+        "noSSL": "無法生成SSL配置，中止.",
         "handler": "處理請求時出錯: %0"
       }
     },
@@ -265,14 +266,14 @@
         "warn": {
           "noData": "沒有角色数据: %0",
           "noConfig": "缺少角色的配置: %0",
-          "noFightPropConfig": "无法获取角色的fight prop配置: %0"
+          "noFightPropConfig": "无法获取角色的戰斗屬性配置: %0"
         }
       },
       "monsterData": {
         "warn": {
           "noData": "沒有动物数据: %0",
           "noConfig": "缺少动物配置: %0",
-          "noFightPropConfig": "无法获取动物的fight prop配置: %0"
+          "noFightPropConfig": "无法获取动物的戰斗屬性配置: %0"
         }
       },
       "warn": {
@@ -306,9 +307,9 @@
       "debug": {
         "loadBlock": "加載 block: %0",
         "unloadBlock": "取消加載 block: %0",
-        "abilityInvokeNoEntity": "Ability invoke to null entity: %0",
+        "abilityInvokeNoEntity": "Ability被空實體調用: %0",
         "join": "加入",
-        "joinInfo": "%0 UID: %1 ID: %2 Pos: [%3,%4,%5] Type: %6 Reason: %7",
+        "joinInfo": "%0 UID: %1 ID: %2 坐標: [%3,%4,%5] 類型: %6 原因: %7",
         "quit": "退出",
         "quitInfo": "%0 UID: %1 ID: %2"
       }
@@ -320,12 +321,12 @@
         "add": "添加: %0",
         "remove": "移除: %0",
         "replace": "代替: %0 -> %1",
-        "updateEntity": "更新 EntityID: %0"
+        "updateEntity": "更新實體ID: %0"
       }
     },
     "combat": {
       "debug": {
-        "fall": "[FALL] Type: %0 Speed: %1 Mul: %2"
+        "fall": "[FALL] 類型: %0 速度: %1 Mul: %2"
       },
       "warn": {
         "noProto": "對於參數類型沒有proto: %0 %1 %2"
@@ -452,52 +453,55 @@
       },
       "script": {
         "desc": "Windy!!",
+        "info": {
+          "send": "正在向客戶端發送腳本..."
+        },
         "error": {
-          "scriptNotFound": "Script 未找到."
+          "scriptNotFound": "未找到腳本，請檢查服務端的 /data/luac 目錄."
         }
       },
       "createConfig": {
         "desc": "如果不存在，則使用預設值創建新config",
         "usage": {
-          "0": "createConfig <name> - 創建新config",
+          "0": "createConfig <name> - 創建新的配置文件",
           "1": "createConfig        - Same except name is set to \"default\""
         },
         "info": {
-          "create": "正在創建config: %0",
-          "created": "已創建 config."
+          "create": "正在創建配置文件: %0",
+          "created": "已創建配置文件."
         },
         "error": {
           "invalidName": "無效的名稱: %0",
-          "exists": "Config 已經存在: %0"
+          "exists": "配置文件已經存在: %0"
         }
       },
       "deleteConfig": {
-        "desc": "刪除config（如果存在）",
+        "desc": "刪除配置文件（如果存在）",
         "usage": {
-          "0": "deleteConfig <name> - 刪除 config",
+          "0": "deleteConfig <name> - 刪除配置文件",
           "1": "deleteConfig        - Same except name is set to \"default\""
         },
         "info": {
-          "delete": "刪除config中: %0",
-          "deleted": "已刪除config."
+          "delete": "刪除配置文件中: %0",
+          "deleted": "已刪除配置文件."
         },
         "error": {
           "invalidName": "無效的名稱: %0",
-          "notFound": "Config 未找到: %0"
+          "notFound": "配置文件未找到: %0"
         }
       },
       "loadConfig": {
-        "desc": "更改當前 config",
+        "desc": "更改當前配置文件",
         "usage": {
-          "0": "loadConfig <name> - 更改當前config併重新啟動",
+          "0": "loadConfig <name> - 更改當前配置文件併重新啟動",
           "1": "loadConfig        - Same except name is set to \"default\""
         },
         "info": {
-          "load": "加載config中: %0"
+          "load": "加載配置文件中: %0"
         },
         "error": {
           "invalidName": "無效的名稱: %0",
-          "notFound": "Config 未找到: %0"
+          "notFound": "配置文件未找到: %0"
         }
       },
       "gpatch": {
@@ -560,7 +564,7 @@
       "pos": {
         "desc": "打印當前位置",
         "usage": {
-          "0": "pos <uid> - 打印該玩家當前位置",
+          "0": "pos <uidInput> - 打印該玩家當前位置",
           "1": "pos       - （遊戲中）打印當前位置"
         },
         "info": {
@@ -568,23 +572,37 @@
         }
       },
       "scene": {
-        "desc": "場景改變",
+        "desc": "進入場景",
         "usage": {
-          "0": "scene <id> <uid> - 將該玩家傳送到該場景",
-          "1": "scene <id>       - （遊戲中）為自己改變場景"
+          "0": "scene <id> <uidInput> - 將該玩家傳送到該場景",
+          "1": "scene <id>       - （遊戲中）改變自己所在的場景"
         },
         "info": {
           "changeScene": "修改場景到: %0"
         },
         "error": {
           "sceneNotFound": "該場景未找到.",
-          "sameScene": "相同的場景."
+          "sameScene": "處於同一場景中."
+        }
+      },
+      "dungeon": {
+        "desc": "進入秘境",
+        "usage": {
+          "0": "dungeon <id> <uidInput> - 將該玩家傳送到該秘境",
+          "1": "dungeon <id>       - （遊戲中）改變自己所在的秘境"
+        },
+        "info": {
+          "changeScene": "傳送到秘境: %0(場景: %1)"
+        },
+        "error": {
+          "sceneNotFound": "該場景未找到.",
+          "sameScene": "處於同一場景中."
         }
       },
       "tp": {
         "desc": "傳送到某位置",
         "usage": {
-          "0": "tp <x> <y> <z> <uid> - 傳送該玩家到某坐標",
+          "0": "tp <x> <y> <z> <uidInput> - 傳送該玩家到某坐標",
           "1": "tp <x> <y> <z>       - （遊戲中）將自己傳送到某坐標"
         },
         "info": {
@@ -594,7 +612,7 @@
       "coop": {
         "desc": "切換為多人世界",
         "usage": {
-          "0": "coop <uid> - 將某玩家切換為多人世界",
+          "0": "coop <uidInput> - 將某玩家切換為多人世界",
           "1": "coop       - （遊戲中）為自己切換為多人世界"
         },
         "info": {
@@ -604,30 +622,23 @@
           "inCoop": "玩家已經在多人世界."
         }
       },
-      "monster": {
-        "desc": "生成怪物",
+      "spawn": {
+        "desc": "生成怪物或Gadget",
         "usage": {
-          "0": "monster <id> <lv> <uid> - 在該玩家當前位置生成怪物",
-          "1": "monster <id> <lv>       - （遊戲中）在當前位置生成怪物"
+          "0": "spawn monster <id> [lv] <uidInput> - 在該玩家當前位置生成怪物",
+          "1": "spawn monster <id> [lv]       - （游戏中）在當前位置生成怪物",
+          "2": "spawn gadget <id> [lv] <uidInput> - 在該玩家當前位置生成Gadget",
+          "3": "spawn gadget <id> [lv]       - （游戏中）在當前位置生成Gadget"
         },
         "info": {
-          "spawn": "生成怪物中: %0"
-        }
-      },
-      "gadget": {
-        "desc": "生成gadget",
-        "usage": {
-          "0": "gadget <id> <lv> <uid> - 在該玩家當前位置生成gadget",
-          "1": "gadget <id> <lv>       - （遊戲中）在當前位置生成gadget"
-        },
-        "info": {
-          "spawn": "生成gadget: %0"
+          "monster": "生成 %1 級的怪物 %0 中...",
+          "gadget": "生成 %1 級的Gadget %0 中..."
         }
       },
       "vehicle": {
         "desc": "生成浪船",
         "usage": {
-          "0": "vehicle <uid> - 在該玩家當前位置生成浪船",
+          "0": "vehicle <uidInput> - 在該玩家當前位置生成浪船",
           "1": "vehicle       - （遊戲中）在當前位置生成浪船"
         },
         "info": {
@@ -637,7 +648,7 @@
       "killall": {
         "desc": "殺死所有附近的怪物 (32 Max)",
         "usage": {
-          "0": "killall <uid> - 殺死該玩家附近的怪物",
+          "0": "killall <uidInput> - 殺死該玩家附近的怪物",
           "1": "killall       - （遊戲中）殺死附近的怪物"
         },
         "info": {
@@ -645,15 +656,15 @@
         }
       },
       "ability": {
-        "desc": "Ability debug",
+        "desc": "調試Ability",
         "error": {
-          "entityNotFound": "Entity not found."
+          "entityNotFound": "未找到指定實體."
         }
       },
       "god": {
         "desc": "切換上帝模式",
         "usage": {
-          "0": "god <uid> - 為該玩家切換上帝模式",
+          "0": "god <uidInput> - 為該玩家切換上帝模式",
           "1": "god       - （遊戲中）為自己切換上帝模式"
         },
         "info": {
@@ -664,7 +675,7 @@
       "heal": {
         "desc": "治療當前團隊中的所有角色",
         "usage": {
-          "0": "heal <uid> - 治療該玩家當前團隊中的所有角色",
+          "0": "heal <uidInput> - 治療該玩家當前團隊中的所有角色",
           "1": "heal       - (遊戲中)治療當前團隊中的所有角色"
         },
         "info": {
@@ -674,24 +685,24 @@
       "recharge": {
         "desc": "為當前團隊中的所有角色充能",
         "usage": {
-          "0": "recharge <uid> - 為該玩家當前團隊中的所有角色充能",
+          "0": "recharge <uidInput> - 為該玩家當前團隊中的所有角色充能",
           "1": "recharge       - (遊戲中) 為當前團隊中的所有角色充能"
         },
         "info": {
-          "recharge": "充能完畢."
+          "recharge": "已充能所有角色."
         }
       },
       "guid": {
         "desc": "顯示當前角色guid和裝備guid",
         "usage": {
-          "0": "guid <uid> - 顯示該玩家的當前角色guid和裝備guid",
+          "0": "guid <uidInput> - 顯示該玩家的當前角色guid和裝備guid",
           "1": "guid       - (遊戲中) 顯示當前角色guid和裝備guid"
         }
       },
       "equip": {
         "desc": "裝備武器或聖遺物",
         "usage": {
-          "0": "equip <guid> <uid> - 為該玩家當前角色裝備武器或聖遺物",
+          "0": "equip <guid> <uidInput> - 為該玩家當前角色裝備武器或聖遺物",
           "1": "equip <guid>       - (遊戲中) 為當前角色裝備武器或聖遺物"
         },
         "info": {
@@ -704,7 +715,7 @@
       "setcs": {
         "desc": "為當前角色設定 cand 技能",
         "usage": {
-          "0": "setcs <id> <uid> - 為該玩家當前角色設定 cand 技能",
+          "0": "setcs <id> <uidInput> - 為該玩家當前角色設定 cand 技能",
           "1": "setcs <id>       - (遊戲中) 為當前角色設定 cand 技能"
         },
         "info": {
@@ -714,27 +725,36 @@
           "noSkill": "技能ID未找到."
         }
       },
-      "setfp": {
-        "desc": "為當前角色設定fight prop",
+      "fp": {
+        "desc": "對當前角色的戰斗屬性進行操作",
         "usage": {
-          "0": "setfp <prop> <value> <uid> - 為該玩家當前角色設定fight prop",
-          "1": "setfp <prop> <value>       - (遊戲中) 為當前角色設定fight prop"
+          "0": "fp list <uidInput>                      - 列出該玩家當前角色的戰斗屬性",
+          "1": "fp list                            - (遊戲中) 列出當前角色的戰斗屬性",
+          "2": "fp get <uidInput> <fightProp>           - 獲取玩家當前角色指定戰斗屬性的數值",
+          "3": "fp get <uidInput> <fightProp>           - (遊戲中) 獲取當前角色指定戰斗屬性的數值",
+          "4": "fp set <uidInput> <fightProp> <value>   - 為當前角色設定戰斗屬性",
+          "5": "fp set <uidInput> <fightProp> <value>   - (遊戲中) 為當前角色設定戰斗屬性"
         },
         "info": {
-          "set": "設定 %0(%1) to %2."
+          "listHead": "戰斗屬性列表\n",
+          "list": "名稱: %0 , ID: %1 , 當前值: %2 \n",
+          "get": "當前角色的 %0(%1) 數值为 %2.",
+          "set": "設定 %0(%1) 為 %2."
         },
         "error": {
-          "invalidFightProp": "無效的 fight prop."
+          "invalidMode": "無效的模式: %0 , 請注意指令規範.\n正確的格式為: /fp <list|get|set> [uid] [fightProp] [value]",
+          "invalidFightProp": "無效的戰斗屬性.\n使用 /fp list 以獲取戰斗屬性列表.",
+          "failedGet": "獲取失败. 名稱: %0 , ID: %1 , 錯誤信息: %2 \n"
         }
       },
       "talent": {
         "desc": "編輯/列出當前角色天賦",
         "usage": {
-          "0": "talent unlock <uid> - 解鎖玩家当前角色的天賦",
+          "0": "talent unlock <uidInput> - 解鎖玩家当前角色的天賦",
           "1": "talent unlock       - (遊戲中) 解锁当前角色天賦",
-          "2": "talent lock <uid>   - 鎖定玩家当前角色的天賦",
+          "2": "talent lock <uidInput>   - 鎖定玩家当前角色的天賦",
           "3": "talent lock         - (遊戲中) 鎖定当前角色天賦",
-          "4": "talent list <uid>   - 列出玩家当前角色已解鎖的天賦",
+          "4": "talent list <uidInput>   - 列出玩家当前角色已解鎖的天賦",
           "5": "talent list         - (遊戲中) 列出当前角色已解鎖的天賦"
         },
         "info": {
@@ -748,17 +768,27 @@
       "ar": {
         "desc": "設定冒險等級",
         "usage": {
-          "0": "ar <level> <uid> - 為該玩家設定冒險等級",
+          "0": "ar <level> <uidInput> - 為該玩家設定冒險等級",
           "1": "ar <level>       - (遊戲中) 給自己設定冒險等級"
         },
         "info": {
           "setAR": "冒險等級設定為: %0"
         }
       },
+      "resin": {
+        "desc": "給予樹脂",
+        "usage": {
+          "0": "resin <amount> <uidInput> - 為該玩家給予某數量的樹脂",
+          "1": "resin <amount>       - (游戏中)為自己給予某數量的樹脂"
+        },
+        "info": {
+          "give": "給予樹脂: %0"
+        }
+      },
       "hcoin": {
         "desc": "給予原石",
         "usage": {
-          "0": "hcoin <amount> <uid> - 為該玩家給予某數量的原石",
+          "0": "hcoin <amount> <uidInput> - 為該玩家給予某數量的原石",
           "1": "hcoin <amount>       - (遊戲中)為自己給予某數量的原石"
         },
         "info": {
@@ -768,7 +798,7 @@
       "mcoin": {
         "desc": "給予創世結晶",
         "usage": {
-          "0": "mcoin <amount> <uid> - 給予某數量創世結晶到該玩家",
+          "0": "mcoin <amount> <uidInput> - 給予某數量創世結晶到該玩家",
           "1": "mcoin <amount>       - (遊戲中) 給自己給予某數量的創世結晶"
         },
         "info": {
@@ -778,7 +808,7 @@
       "scoin": {
         "desc": "給予摩拉",
         "usage": {
-          "0": "scoin <amount> <uid> - 給予某數量摩拉到該玩家",
+          "0": "scoin <amount> <uidInput> - 給予某數量摩拉到該玩家",
           "1": "scoin <amount>       - (遊戲中) 給自己給予某數量的摩拉"
         },
         "info": {
@@ -795,7 +825,7 @@
       "material": {
         "desc": "給予材料",
         "usage": {
-          "0": "material <id> <count> <uid> - 給予某數量的材料到該玩家",
+          "0": "material <id> <count> <uidInput> - 給予某數量的材料到該玩家",
           "1": "material <id> <count>       - （遊戲中）給予自己某數量的材料",
           "2": "material <id>               - （遊戲中）給予自己一個材料"
         },
@@ -806,7 +836,7 @@
       "weapon": {
         "desc": "給予武器",
         "usage": {
-          "0": "weapon <id> <count> <uid> - 給予某數量的武器到該玩家",
+          "0": "weapon <id> <count> <uidInput> - 給予某數量的武器到該玩家",
           "1": "weapon <id> <count>       - （遊戲中）給予自己某數量的武器",
           "2": "weapon <id>               - （遊戲中）給予自己一件武器"
         },
@@ -817,7 +847,7 @@
       "artifact": {
         "desc": "給予聖遺物",
         "usage": {
-          "0": "artifact <id> <count> <uid> - 給予某數量的聖遺物到該玩家",
+          "0": "artifact <id> <count> <uidInput> - 給予某數量的聖遺物到該玩家",
           "1": "artifact <id> <count>       - （遊戲中）給予自己某數量的聖遺物",
           "2": "artifact <id>               - （遊戲中）給予自己一個聖遺物"
         },
@@ -828,7 +858,7 @@
       "artSet": {
         "desc": "給予設定過的聖遺物",
         "usage": {
-          "0": "artSet <id> <count> <uid> -  給予某數量的聖遺物到該玩家",
+          "0": "artSet <id> <count> <uidInput> -  給予某數量的聖遺物到該玩家",
           "1": "artSet <id> <count>       - （遊戲中）給予自己某數量的聖遺物",
           "2": "artSet <id>               - （遊戲中）給予自己一個聖遺物"
         },
