@@ -2,7 +2,11 @@ import Packet, { PacketContext, PacketInterface } from '#/packet'
 import Monster from '$/entity/monster'
 import Vector from '$/utils/vector'
 import { ClientStateEnum } from '@/types/enum'
-import { ChangeHpReasonEnum, PlayerDieTypeEnum, ProtEntityTypeEnum, RetcodeEnum } from '@/types/proto/enum'
+import { ChangeHpReasonEnum, PlayerDieTypeEnum, ProtEntityTypeEnum, RetcodeEnum, SceneEnterReasonEnum, SceneEnterTypeEnum } from '@/types/proto/enum'
+import Logger from '@/logger'
+import Gadget from '$/entity/gadget'
+import SceneData from '$/gameData/data/SceneData'
+const logger = new Logger('GMTALK')
 
 export interface GmTalkReq {
   msg: string
@@ -82,10 +86,49 @@ class GmTalkPacket extends Packet implements PacketInterface {
     if (type == null) player.godMode = enable
   }
 
+  // new
+  private async gmtTp(context: PacketContext, x: number, y: number, z: number) {
+    const { player } = context
+    const { currentScene } = player
+    currentScene.join(context, new Vector(x, y, z), new Vector(), SceneEnterTypeEnum.ENTER_GOTO, SceneEnterReasonEnum.TRANS_POINT)
+  }
+
+  private async gmtScoin(context: PacketContext, amount: number) {
+    const { player } = context
+    player.addMora(amount, true)
+  }
+
+  private async gmtGadget(context: PacketContext, id: number, lv: number) {
+    const { player } = context
+    const gadget = new Gadget(id)
+    gadget.motion.pos.copy(player.pos)
+    gadget.bornPos.copy(player.pos)
+
+    await gadget.initNew(lv)
+    await player.currentScene.entityManager.add(gadget)
+  }
+
+  private async gmtJump(context: PacketContext, id: number) {
+    const { player } = context
+
+    const scene = await player.currentWorld.getScene(id)
+    const sceneData = await SceneData.getScene(id)
+
+    const { BornPos, BornRot } = sceneData
+    const pos = new Vector()
+    const rot = new Vector()
+    pos.setData(BornPos)
+    rot.setData(BornRot)
+
+    scene.join(context, pos, rot, SceneEnterTypeEnum.ENTER_JUMP, SceneEnterReasonEnum.TRANS_POINT)
+  }
+
   async request(context: PacketContext, data: GmTalkReq): Promise<void> {
     const { msg } = data
     const cmd = msg?.split(' ')?.[0]?.toLowerCase()
     const args = msg?.split(' ')?.slice(1) || []
+
+    logger.info(`[${context.player.uid}] ${msg}`)
 
     switch (cmd) {
       case 'hp':
@@ -100,8 +143,20 @@ class GmTalkPacket extends Packet implements PacketInterface {
       case 'wudi':
         await this.gmtGod(context, args.slice(-1)[0] === 'ON', args.length > 1 ? args[0] : undefined)
         break
+      case 'goto':
+        await this.gmtTp(context, Number(args[0]), Number(args[1]), Number(args[2]))
+        break
+      case 'scoin':
+        await this.gmtScoin(context, Number(args[0]))
+        break
+      case 'gadget':
+        await this.gmtGadget(context, Number(args[0]), Number(args[1]))
+        break
+      case 'jump':
+        await this.gmtJump(context, Number(args[0]))
+        break
       default:
-        console.log('GmTalk:', msg)
+        logger.warn(`Unsupported GM command: ${msg}`)
         await this.response(context, { retcode: RetcodeEnum.RET_UNKNOWN_ERROR })
         return
     }
