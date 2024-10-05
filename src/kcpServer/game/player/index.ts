@@ -170,6 +170,10 @@ export default class Player extends BaseClass {
     return this.client.uid
   }
 
+  get resin(): number {
+    return this.props.get(PlayerPropEnum.PROP_PLAYER_RESIN)
+  }
+
   get mora(): number {
     return this.props.get(PlayerPropEnum.PROP_PLAYER_SCOIN)
   }
@@ -475,6 +479,10 @@ export default class Player extends BaseClass {
     return this.inventory.getItem(guid)
   }
 
+  async setResin(v: number, notify: boolean = true) {
+    await this.props.set(PlayerPropEnum.PROP_PLAYER_RESIN, v, notify)
+  }
+
   async setMora(v: number, notify: boolean = true) {
     await this.props.set(PlayerPropEnum.PROP_PLAYER_SCOIN, v, notify)
   }
@@ -485,6 +493,10 @@ export default class Player extends BaseClass {
 
   async setGenesisCrystal(v: number, notify: boolean = true) {
     await this.props.set(PlayerPropEnum.PROP_PLAYER_MCOIN, v, notify)
+  }
+
+  async addResin(v: number, notify: boolean = true) {
+    await this.setResin(this.resin + v, notify)
   }
 
   async addMora(v: number, notify: boolean = true) {

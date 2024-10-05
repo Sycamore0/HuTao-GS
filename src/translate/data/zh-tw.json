@@ -761,6 +761,16 @@
           "setAR": "冒險等級設定為: %0"
         }
       },
+      "resin": {
+        "desc": "給予樹脂",
+        "usage": {
+          "0": "resin <amount> <uidInput> - 為該玩家給予某數量的樹脂",
+          "1": "resin <amount>       - (游戏中)為自己給予某數量的樹脂"
+        },
+        "info": {
+          "give": "給予樹脂: %0"
+        }
+      },
       "hcoin": {
         "desc": "給予原石",
         "usage": {

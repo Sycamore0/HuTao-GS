@@ -762,6 +762,16 @@
           "setAR": "Adventure rank set to: %0"
         }
       },
+      "resin": {
+        "desc": "Give resin",
+        "usage": {
+          "0": "resin <amount> <uidInput> - Give resin to player",
+          "1": "resin <amount>       - (In game) Give resin to yourself"
+        },
+        "info": {
+          "give": "Give resin: %0"
+        }
+      },
       "hcoin": {
         "desc": "Give primogem",
         "usage": {
