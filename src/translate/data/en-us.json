@@ -586,6 +586,20 @@
           "sameScene": "Same scene."
         }
       },
+      "dungeon": {
+        "desc": "Enter dungeon",
+        "usage": {
+          "0": "dungeon <id> <uidInput> - Enter dungeon for player",
+          "1": "dungeon <id>       - (In game) Enter dungeon for yourself"
+        },
+        "info": {
+          "changeScene": "Enter dungeon: %0(Scene: %1)"
+        },
+        "error": {
+          "sceneNotFound": "Scene not found.",
+          "sameScene": "Same scene."
+        }
+      },
       "tp": {
         "desc": "Teleport to location",
         "usage": {

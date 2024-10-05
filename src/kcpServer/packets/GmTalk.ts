@@ -6,6 +6,7 @@ import { ChangeHpReasonEnum, PlayerDieTypeEnum, ProtEntityTypeEnum, RetcodeEnum,
 import Logger from '@/logger'
 import Gadget from '$/entity/gadget'
 import SceneData from '$/gameData/data/SceneData'
+import DungeonData from '$/gameData/data/DungeonData'
 const logger = new Logger('GMTALK')
 
 export interface GmTalkReq {
@@ -108,11 +109,8 @@ class GmTalkPacket extends Packet implements PacketInterface {
     await player.currentScene.entityManager.add(gadget)
   }
 
-  private async gmtJump(context: PacketContext, id: number) {
-    const { player } = context
-
-    const scene = await player.currentWorld.getScene(id)
-    const sceneData = await SceneData.getScene(id)
+  private async getSceneData(sceneId: number) {
+    const sceneData = await SceneData.getScene(sceneId)
 
     const { BornPos, BornRot } = sceneData
     const pos = new Vector()
@@ -120,7 +118,26 @@ class GmTalkPacket extends Packet implements PacketInterface {
     pos.setData(BornPos)
     rot.setData(BornRot)
 
+    return { pos, rot }
+  }
+
+  private async gmtJump(context: PacketContext, id: number) {
+    const { player } = context
+
+    const scene = await player.currentWorld.getScene(id)
+    const { pos, rot } = await this.getSceneData(id)
+
     scene.join(context, pos, rot, SceneEnterTypeEnum.ENTER_JUMP, SceneEnterReasonEnum.TRANS_POINT)
+  }
+
+  private async gmtDungeon(context: PacketContext, id: number) {
+    const { player } = context
+    const sceneId = await DungeonData.getSceneByDungeon(id)
+
+    const scene = await player.currentWorld.getScene(sceneId)
+    const { pos, rot } = await this.getSceneData(sceneId)
+
+    scene.join(context, pos, rot, SceneEnterTypeEnum.ENTER_DUNGEON, SceneEnterReasonEnum.DUNGEON_ENTER)
   }
 
   async request(context: PacketContext, data: GmTalkReq): Promise<void> {
@@ -154,6 +171,9 @@ class GmTalkPacket extends Packet implements PacketInterface {
         break
       case 'jump':
         await this.gmtJump(context, Number(args[0]))
+        break
+      case 'dungeon':
+        await this.gmtDungeon(context, Number(args[0]))
         break
       default:
         logger.warn(`Unsupported GM command: ${msg}`)
