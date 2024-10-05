@@ -2,7 +2,6 @@ import Packet, { PacketInterface, PacketContext } from '#/packet'
 import { ShopGoods } from '@/types/proto'
 import { RetcodeEnum } from '@/types/proto/enum'
 import Material from '$/material'
-import Player from '$/player'
 
 export interface BuyGoodsReq {
   buyCount: number
@@ -32,12 +31,17 @@ class BuyGoodsPacket extends Packet implements PacketInterface {
     // cost
     if (goods.scoin !== undefined || 0) {
       player.addMora(-goods.scoin)
-    }
-    if (goods.hcoin !== undefined || 0) {
+    } else if (goods.hcoin !== undefined || 0) {
       player.addPrimogem(-goods.hcoin)
-    }
-    if (goods.mcoin !== undefined || 0) {
+    } else if (goods.mcoin !== undefined || 0) {
       player.addGenesisCrystal(-goods.mcoin)
+    } else {
+      const costItemList = goods.costItemList
+      costItemList.forEach(costItem => {
+        if (costItem && costItem.itemId !== undefined && costItem.count !== undefined) {
+          player.inventory.remove(costItem.itemId, costItem.count);
+        }
+      });
     }
 
     const { itemId: goodItemId, count: goodItemCount } = goods.goodsItem

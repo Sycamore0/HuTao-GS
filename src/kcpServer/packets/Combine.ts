@@ -4,8 +4,6 @@ import Material from '$/material'
 import { ItemParam } from '@/types/proto/ItemParam'
 import { RetcodeEnum } from '@/types/proto/enum'
 
-// log prefix 6個字，長了
-
 export interface CombineReq {
   combineId: number
   combineCount: number
@@ -24,8 +22,6 @@ export interface CombineRsp {
   totalExtraItemList?: ItemParam[]
 }
 
-export interface CombineNotify { }
-
 class CombinePacket extends Packet implements PacketInterface {
   constructor() {
     super('Combine')
@@ -35,7 +31,7 @@ class CombinePacket extends Packet implements PacketInterface {
     const { player } = context
     const { combineId, combineCount, avatarGuid } = data
 
-    const combineData = (await CombineData.getCombineData(combineId))
+    const combineData = (await CombineData.getCombineData(combineId)) || []
     const resultItemId = combineData.find(data => data.ResultItemId)?.ResultItemId || 0
     const resultItemCount = combineData.find(data => data.ResultItemCount)?.ResultItemCount || 0
     const scoinCost = combineData.find(data => data.ScoinCost)?.ScoinCost || 0
@@ -46,12 +42,14 @@ class CombinePacket extends Packet implements PacketInterface {
     // Combine
     costItemsList.forEach(costItem => {
       if (costItem && costItem.Id !== undefined && costItem.Count !== undefined) {
-        const costItemId = costItem.Id;
-        const costItemCount = costItem.Count;
-        player.inventory.remove(costItemId, costItemCount * combineCount);
+        player.inventory.remove(costItem.Id, costItem.Count * combineCount)
+        // cost resin
+        if (costItem.Id === 106) {
+          player.addResin(-costItem.Count * combineCount)
+        }
       }
     });
-    player.addMora(-scoinCost * combineCount)
+    player.addMora(-scoinCost * combineCount) // cost scoin
     const resultItem = await Material.create(player, resultItemId, combineCount)
     player.inventory.add(resultItem)
 
