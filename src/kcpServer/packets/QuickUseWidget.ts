@@ -1,7 +1,10 @@
 import Packet, { PacketContext, PacketInterface } from '#/packet'
 import { ClientStateEnum } from '@/types/enum'
-import { ClientCollectorData, OneoffGatherPointDetectorData, WidgetCameraInfo, WidgetCreateLocationInfo, WidgetCreatorInfo, WidgetThunderBirdFeatherInfo } from '@/types/proto'
+import { ClientCollectorData, OneoffGatherPointDetectorData, WidgetCameraInfo, WidgetCreateLocationInfo, WidgetCreatorInfo, WidgetThunderBirdFeatherInfo, SkyCrystalDetectorQuickUseResult } from '@/types/proto'
 import { RetcodeEnum } from '@/types/proto/enum'
+
+import Logger from '@/logger'
+const logger = new Logger('WIDGET')
 
 export interface QuickUseWidgetReq {
   locationInfo?: WidgetCreateLocationInfo
@@ -15,6 +18,7 @@ export interface QuickUseWidgetRsp {
   materialId?: number
   detectorData?: OneoffGatherPointDetectorData
   clientCollectorData?: ClientCollectorData
+  skyCrystalDetectorQuickUseResult?: SkyCrystalDetectorQuickUseResult
 }
 
 class QuickUseWidgetPacket extends Packet implements PacketInterface {
@@ -26,7 +30,7 @@ class QuickUseWidgetPacket extends Packet implements PacketInterface {
   }
 
   async request(context: PacketContext, data: QuickUseWidgetReq): Promise<void> {
-    console.log(data)
+    logger.info(`Req data: ${data}`)
     await this.response(context, { retcode: RetcodeEnum.RET_UNKNOWN_ERROR })
   }
 
