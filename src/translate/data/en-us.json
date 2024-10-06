@@ -683,6 +683,32 @@
           "heal": "Healed all avatar."
         }
       },
+      "level": {
+        "desc": "Set current avatar level",
+        "usage": {
+          "0": "level <lv> <uidInput> - Set player's current avatar level",
+          "1": "level <lv>       - (In game) Set current avatar level"
+        },
+        "info": {
+          "level": "Avatar(id: %0) level set to %1."
+        },
+        "error": {
+          "invalidLv": "Invalid level: %0, it should be 1~90."
+        }
+      },
+      "promote": {
+        "desc": "Set current avatar promote level",
+        "usage": {
+          "0": "promote <promotion> <uidInput> - Set player's current avatar promote level",
+          "1": "promote <promotion>       - (In game) Set current avatar promote level"
+        },
+        "info": {
+          "promote": "Avatar(id: %0) promote level set to %1."
+        },
+        "error": {
+          "invalidpromotion": "Invalid promote level: %0, it should be 0~6."
+        }
+      },
       "recharge": {
         "desc": "Recharge all avatar in current team",
         "usage": {
