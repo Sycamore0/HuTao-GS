@@ -30,6 +30,8 @@ class QuickUseWidgetPacket extends Packet implements PacketInterface {
   }
 
   async request(context: PacketContext, data: QuickUseWidgetReq): Promise<void> {
+    const { locationInfo, cameraInfo, creatorInfo, thunderBirdFeatherInfo } = data
+
     logger.info(`Req data: ${data}`)
     await this.response(context, { retcode: RetcodeEnum.RET_UNKNOWN_ERROR })
   }
