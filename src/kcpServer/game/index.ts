@@ -34,6 +34,8 @@ import ActivityManager from './manager/activityManager'
 import { ChatManager } from './manager/chatManager'
 import ShopManager from './manager/shopManager'
 
+const logger = new Logger('GAME')
+
 export default class Game {
   server: KcpServer
 
@@ -99,7 +101,7 @@ export default class Game {
       // login
       await this.playerLogin(player.context)
     } catch (err) {
-      console.log('Failed to create server player:', err)
+      logger.error('Failed to create server player:', err)
     }
   }
 

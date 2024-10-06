@@ -15,6 +15,7 @@ import { getStringHash } from '@/utils/hash'
 import EntityProps from './entityProps'
 import FightProp, { FightPropChangeReason } from './fightProps'
 import Motion from './motion'
+import SceneEntityAppear from '#/packets/SceneEntityAppear'
 
 export default class Entity extends BaseClass {
   manager?: EntityManager
@@ -140,8 +141,28 @@ export default class Entity extends BaseClass {
   get level() {
     return this.props.get(PlayerPropEnum.PROP_LEVEL)
   }
+
   set level(v: number) {
     this.props.set(PlayerPropEnum.PROP_LEVEL, v)
+    // promotion
+    if (v >= 1 && v <= 20) {
+      this.promoteLevel = 0
+    } else if (v > 20 && v <= 40) {
+      this.promoteLevel = 1
+    } else if (v > 40 && v <= 50) {
+      this.promoteLevel = 2
+    } else if (v > 50 && v <= 60) {
+      this.promoteLevel = 3
+    } else if (v > 60 && v <= 70) {
+      this.promoteLevel = 4
+    } else if (v > 70 && v <= 80) {
+      this.promoteLevel = 5
+    } else if (v > 80 && v <= 90) {
+      this.promoteLevel = 6
+    } else {
+      // do nothing
+    }
+    SceneEntityAppear.sendNotify
   }
 
   get exp() {

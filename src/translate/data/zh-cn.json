@@ -345,7 +345,7 @@
       "debug": {
         "ability": "成功缓存能力数据",
         "avatar": "成功缓存头像数据",
-        "dungeon": "成功缓存地下城数据",
+        "dungeon": "成功缓存秘境数据",
         "gadget": "成功缓存小工具数据",
         "growCurve": "成功缓存成长曲线数据",
         "mapArea": "成功缓存地图区域数据",
@@ -680,6 +680,32 @@
         },
         "info": {
           "heal": "已治疗所有角色."
+        }
+      },
+      "level": {
+        "desc": "设置当前角色的等级",
+        "usage": {
+          "0": "level <lv> <uidInput> - 设置玩家当前角色的等级",
+          "1": "level <lv>       - (游戏中)设置当前角色的等级"
+        },
+        "info": {
+          "level": "角色(id: %0) 等级设置为 %1."
+        },
+        "error": {
+          "invalidLv": "无效的等级: %0, 应当为1~90的任意整数."
+        }
+      },
+      "promote": {
+        "desc": "设置当前角色的突破等级",
+        "usage": {
+          "0": "promote <promotion> <uidInput> - 设置玩家当前角色的突破等级",
+          "1": "promote <promotion>       - (游戏中)设置当前角色的突破等级"
+        },
+        "info": {
+          "promote": "角色(id: %0) 突破等级设置为 %1."
+        },
+        "error": {
+          "invalidpromotion": "无效的突破等级: %0, 应当为0~6的任意整数."
         }
       },
       "recharge": {
