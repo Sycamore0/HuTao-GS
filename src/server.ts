@@ -1,6 +1,7 @@
 import AbilityData from '$/gameData/data/AbilityData'
 import AvatarData from '$/gameData/data/AvatarData'
 import CombineData from '$/gameData/data/CombineData'
+import CookData from '$/gameData/data/CookData'
 import DungeonData from '$/gameData/data/DungeonData'
 import GadgetData from '$/gameData/data/GadgetData'
 import GrowCurveData from '$/gameData/data/GrowCurveData'
@@ -348,6 +349,8 @@ export default class Server {
     logger.debug('message.cache.debug.ability')
     await AvatarData.getData()
     logger.debug('message.cache.debug.avatar')
+    await CookData.getData()
+    logger.debug('message.cache.debug.cook')
     await CombineData.getData()
     logger.debug('message.cache.debug.combine')
     await DungeonData.getData()

@@ -6,6 +6,8 @@ import AllWidgetData from '#/packets/AllWidgetData'
 import AvatarData from '#/packets/AvatarData'
 import AvatarSatiationData from '#/packets/AvatarSatiationData'
 import CombineData from '#/packets/CombineData'
+import CookData from '#/packets/CookData'
+import CookGradeData from '#/packets/CookGradeData'
 import CoopData from '#/packets/CoopData'
 import DoSetPlayerBornData from '#/packets/DoSetPlayerBornData'
 import FinishedParentQuest from '#/packets/FinishedParentQuest'
@@ -186,6 +188,9 @@ export default class Game {
     await activityManager.sendAllActivityInfo(context)
 
     await CombineData.sendNotify(context)
+    await CookData.sendNotify(context)
+    await CookGradeData.sendNotify(context)
+
     await PlayerData.sendNotify(context)
     await OpenStateUpdate.sendNotify(context)
     await StoreWeightLimit.sendNotify(context)
