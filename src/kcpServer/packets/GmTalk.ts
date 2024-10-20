@@ -155,18 +155,6 @@ class GmTalkPacket extends Packet implements PacketInterface {
     scene.join(context, pos, rot, SceneEnterTypeEnum.ENTER_DUNGEON, SceneEnterReasonEnum.DUNGEON_ENTER)
   }
 
-  private async gmtLevel(context: PacketContext, level: number) {
-    const { player } = context
-    player.currentAvatar.level = level
-    logger.info(`[${player.uid}]Current avatar level set to ${level}.`)
-  }
-
-  private async gmtBreak(context: PacketContext, promoteLevel: number) {
-    const { player } = context
-    player.currentAvatar.promoteLevel = promoteLevel
-    logger.info(`[${player.uid}]Current avatar promote level set to ${promoteLevel}.`)
-  }
-
   async request(context: PacketContext, data: GmTalkReq): Promise<void> {
     const { msg } = data
     const cmd = msg?.split(' ')?.[0]?.toLowerCase()
@@ -201,12 +189,6 @@ class GmTalkPacket extends Packet implements PacketInterface {
         break
       case 'dungeon':
         await this.gmtDungeon(context, Number(args[0]))
-        break
-      case 'level':
-        await this.gmtLevel(context, Number(args[0]))
-        break
-      case 'break':
-        await this.gmtBreak(context, Number(args[0]))
         break
       default:
         logger.warn(`[${context.player.uid}]Unsupported GM command: ${msg}`)
